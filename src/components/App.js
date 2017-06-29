@@ -1,0 +1,15 @@
+import React, { Component } from 'react';
+import '../App.css';
+import NavBar from './NavBar'
+import Container from './Container'
+
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <Container />
+      </div>
+    )
+  }
+}
