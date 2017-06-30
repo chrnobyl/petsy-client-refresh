@@ -6,7 +6,7 @@ function NavBar(props) {
     <nav className="navbar navbar-inverse">
       <div className="container-fluid">
         <div className="navbar-header">
-          Pet Adoption
+          <h1>Pet Adoption</h1>
         </div>
       </div>
     </nav>
