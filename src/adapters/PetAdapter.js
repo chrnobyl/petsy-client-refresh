@@ -6,6 +6,11 @@ export default class PetAdapter  {
       .then( res => res.json() )
   }
 
+  static allUserPets(){
+    return fetch(`${baseUrl}/user_pets`)
+    .then( res => res.json())
+  }
+
   // static createPet(){
   //   return fetch(`${this.url()}`, {
   //     method: 'POST',
