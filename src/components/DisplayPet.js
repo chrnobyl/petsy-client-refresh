@@ -12,8 +12,7 @@ const DisplayPet = (props) => {
     } else {
       return (
         // <Pet id={props.pet.id} name={props.pet.name} age={props.pet.age} picture={props.pet.picture}/>
-
-        <Card className="center">
+        <Card>
           <Image src={props.pet.picture} />
           <Card.Content>
             <Card.Header>
@@ -40,17 +39,13 @@ const DisplayPet = (props) => {
               icon='heart' onClick={props.yesPet}
             />
           </Card.Content>
-
-            {/* <button className="btn btn-success btn-lg btn-block" onClick={props.yesPet}>yes</button>
-            <button className="btn btn-danger btn-lg btn-block" onClick={props.noPet}>no</button> */}
-
         </Card>
       )
     }
   }
 
   return (
-    <div>
+    <div className="center">
       {returnPet(props)}
     </div>
   )

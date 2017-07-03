@@ -13,11 +13,10 @@ export default class Container extends Component {
       petNum: 1,
       pets: [],
       userPets: []
-
     }
+
     this.yesPet = this.yesPet.bind(this)
     this.noPet = this.noPet.bind(this)
-    // this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   componentDidMount(){
@@ -29,32 +28,21 @@ export default class Container extends Component {
     .then(data => {
       this.setState({ userPets: data })
     })
+    document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   yesPet(){
     let newPetNum = this.state.petNum + 1
-    console.log('Yes!!!')
-    // console.log(`About to send ${this.state.petNum} to Rails`)
     PetAdapter.createUserPet(this.state.petNum)
     .then( resp => (
       PetAdapter.allUserPets()
       .then(data => {
-        console.log(data)
-        console.log('About to update state')
-        console.log('state is')
-        console.log(this.state)
         this.setState({
           petNum: newPetNum,
           userPets: data
         })
-        console.log('new state is')
-        console.log(this.state)
       }))
     )
-
-    // this.setState( Object.assign({},this.state,{petNum: newPetNum}) )
-
-
   }
 
   noPet(){
@@ -64,18 +52,22 @@ export default class Container extends Component {
     })
   }
 
+  handleKeyDown(event){
+    event.preventDefault()
+    console.log(this.state.petNum)
+    if(event.keyCode === 39){
+      return this.yesPet()
+    } else if (event.keyCode === 37){
+      return this.noPet()
+    }
+  }
 
   render(){
     return (
       <div>
         <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} />
-        <UserPets className='col-md-8' pets={this.state.userPets} />
-        <div className="center">
-          {/* <button className="btn btn-success btn-lg btn-block" onClick={this.yesPet}>yes</button>
-          <button className="btn btn-danger btn-lg btn-block" onClick={this.noPet}>no</button> */}
-        </div>
+        <UserPets className="element" pets={this.state.userPets} />
       </div>
     )
   }
-
 }
