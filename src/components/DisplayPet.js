@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button } from 'semantic-ui-react'
 import Pet from './Pet'
 
 const DisplayPet = (props) => {
@@ -12,6 +12,7 @@ const DisplayPet = (props) => {
     } else {
       return (
         // <Pet id={props.pet.id} name={props.pet.name} age={props.pet.age} picture={props.pet.picture}/>
+
         <Card className="center">
           <Image src={props.pet.picture} />
           <Card.Content>
@@ -32,9 +33,17 @@ const DisplayPet = (props) => {
               <Icon name='user' />
               North Shore Animal League
             </a>
+            <Button secondary onClick={props.noPet}>Next</Button>
+            <Button
+              color='green'
+              content='Adopt'
+              icon='heart' onClick={props.yesPet}
+            />
           </Card.Content>
-          <button className="btn btn-success btn-lg btn-block" onClick={props.yesPet}>yes</button>
-          <button className="btn btn-danger btn-lg btn-block" onClick={props.noPet}>no</button>
+
+            {/* <button className="btn btn-success btn-lg btn-block" onClick={props.yesPet}>yes</button>
+            <button className="btn btn-danger btn-lg btn-block" onClick={props.noPet}>no</button> */}
+
         </Card>
       )
     }
