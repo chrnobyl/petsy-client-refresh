@@ -22,6 +22,7 @@ export default class Container extends Component {
   componentDidMount(){
     PetAdapter.all()
     .then(data => {
+      data.filter(d => d.sex === "female")
       this.setState({ pets: data })
     })
     PetAdapter.allUserPets()

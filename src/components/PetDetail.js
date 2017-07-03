@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../App.css';
 
-const Pet = (props) => {
+const PetDetail = (props) => {
   return (
     <div>
       <div>id: {props.id} Name: {props.name}, Age: {props.age}</div>
@@ -10,4 +10,4 @@ const Pet = (props) => {
   )
 }
 
-export default Pet
+export default PetDetail

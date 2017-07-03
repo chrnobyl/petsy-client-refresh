@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Image, List } from 'semantic-ui-react'
 import PetAdapter from '../adapters/PetAdapter'
-import Pet from './Pet'
+// import PetDetail from './PetDetail'
 
 export default function UserPets(props) {
   if (props.pets.length >= 1) {
   return (
     <div className="right">
-      <List animated verticalAlign='middle'>
+      <List animated verticalAlign='middle' size="massive">
         {props.pets.map((pet, i) => {
           return (
             <List.Item key={i}>

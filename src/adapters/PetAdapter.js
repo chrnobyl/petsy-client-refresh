@@ -1,4 +1,10 @@
 const baseUrl = 'http://localhost:3000/api/v1'
+let species = ""
+let minAge = ""
+let maxAge = ""
+let sex = ""
+let color = ""
+let shelter = ""
 
 export default class PetAdapter  {
   static all(){
@@ -9,7 +15,6 @@ export default class PetAdapter  {
   static allUserPets(){
     return fetch(`${baseUrl}/user_pets`)
     .then( res => res.json())
-    
   }
 
   // static createPet(){
@@ -46,20 +51,20 @@ export default class PetAdapter  {
     // .then(window.location.href = "http://localhost:3001/foods")
   }
 
-  static update(food){
-    return fetch(`${this.url()}/${food.id}`, {
-      method: 'PATCH',
-      headers: this.headers(),
-      body: JSON.stringify({
-        food: {
-          name: food.name.value,
-          expiration_date: food.expiration_date.value,
-          quantity: food.quantity.value,
-          category_id: food.category_id.value
-        }
-      })
-    })
-  }
+  // static update(food){
+  //   return fetch(`${this.url()}/${food.id}`, {
+  //     method: 'PATCH',
+  //     headers: this.headers(),
+  //     body: JSON.stringify({
+  //       food: {
+  //         name: food.name.value,
+  //         expiration_date: food.expiration_date.value,
+  //         quantity: food.quantity.value,
+  //         category_id: food.category_id.value
+  //       }
+  //     })
+  //   })
+  // }
 
   static destroy(id){
     return fetch(`${this.url()}/${id}`, {
