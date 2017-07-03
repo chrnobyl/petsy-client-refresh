@@ -68,10 +68,12 @@ export default class Container extends Component {
   render(){
     return (
       <div>
-        <button className="btn btn-default" onClick={this.yesPet}>yes</button>
-        <button className="btn btn-default" onClick={this.noPet}>no</button>
-        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} />
+        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} />
         <UserPets className='col-md-8' pets={this.state.userPets} />
+        <div className="center">
+          {/* <button className="btn btn-success btn-lg btn-block" onClick={this.yesPet}>yes</button>
+          <button className="btn btn-danger btn-lg btn-block" onClick={this.noPet}>no</button> */}
+        </div>
       </div>
     )
   }

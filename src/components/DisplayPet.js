@@ -33,13 +33,17 @@ const DisplayPet = (props) => {
               North Shore Animal League
             </a>
           </Card.Content>
+          <button className="btn btn-success btn-lg btn-block" onClick={props.yesPet}>yes</button>
+          <button className="btn btn-danger btn-lg btn-block" onClick={props.noPet}>no</button>
         </Card>
       )
     }
   }
 
   return (
-    <div >{returnPet(props)}</div>
+    <div>
+      {returnPet(props)}
+    </div>
   )
 }
 
