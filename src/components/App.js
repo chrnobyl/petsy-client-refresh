@@ -6,7 +6,7 @@ import Container from './Container'
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <NavBar />
         <Container />
       </div>

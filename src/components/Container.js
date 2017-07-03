@@ -4,14 +4,16 @@ import keydown from 'react-keydown'
 import PetAdapter from '../adapters/PetAdapter'
 import PetList from './PetList'
 import UserPets from './UserPets'
+import DisplayPet from './DisplayPet'
 
 export default class Container extends Component {
   constructor(){
     super()
     this.state = {
+      petNum: 1,
       pets: [],
-      userPets: [],
-      petNum: 1
+      userPets: []
+
     }
     this.yesPet = this.yesPet.bind(this)
     this.noPet = this.noPet.bind(this)
@@ -30,25 +32,28 @@ export default class Container extends Component {
   }
 
   yesPet(){
+    let newPetNum = this.state.petNum + 1
     console.log('Yes!!!')
     // console.log(`About to send ${this.state.petNum} to Rails`)
     PetAdapter.createUserPet(this.state.petNum)
-    let newPetNum = this.state.petNum + 1
-    this.setState( Object.assign({},this.state,{petNum: newPetNum}) )
-    PetAdapter.allUserPets()
-    .then(data => {
-      console.log(data)
-      this.setState(Object.assign({},this.state,{userPets:data}))
-    })
-    //let newState = this.state.petNum += 1
-    // console.log(`State is...`)
-    // console.log(this.state)
-    // console.log(this.state.petNum)
+    .then( resp => (
+      PetAdapter.allUserPets()
+      .then(data => {
+        console.log(data)
+        console.log('About to update state')
+        console.log('state is')
+        console.log(this.state)
+        this.setState({
+          petNum: newPetNum,
+          userPets: data
+        })
+        console.log('new state is')
+        console.log(this.state)
+      }))
+    )
 
-    // console.log(newPetNum)
+    // this.setState( Object.assign({},this.state,{petNum: newPetNum}) )
 
-    // console.log(`The new state is...`)
-    // console.log(this.state)
 
   }
 
@@ -59,24 +64,14 @@ export default class Container extends Component {
     })
   }
 
-  // handleKeyPress(event){
-  //   event.preventDefault()
-  //   console.log(this.state.petNum)
-  //   if(event.keyCode === 39){
-  //     return this.yesPet()
-  //   } else if (event.keyCode === 37){
-  //     return this.noPet()
-  //   }
-  // }
-
 
   render(){
     return (
       <div>
-        <PetList pets={this.state.pets} petNum={this.state.petNum} />
-        <UserPets className='col-md-8' pets={this.state.userPets} />
         <button className="btn btn-default" onClick={this.yesPet}>yes</button>
         <button className="btn btn-default" onClick={this.noPet}>no</button>
+        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} />
+        <UserPets className='col-md-8' pets={this.state.userPets} />
       </div>
     )
   }

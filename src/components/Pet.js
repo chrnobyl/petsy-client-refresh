@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
+import '../App.css';
 
-export default class Pet extends Component {
-  constructor(props){
-    super(props)
-  }
-
-
-
-  render(){
-    return (
-      <div>
-        <div>id: {this.props.id} Name: {this.props.name}, Age: {this.props.age}</div>
-        <div><img src={this.props.picture}/></div>
-
-      </div>
-    )
-  }
-
+const Pet = (props) => {
+  return (
+    <div>
+      <div>id: {props.id} Name: {props.name}, Age: {props.age}</div>
+      <div className="pics"><img src={props.picture} /></div>
+    </div>
+  )
 }
+
+export default Pet

@@ -3,18 +3,27 @@ import PetAdapter from '../adapters/PetAdapter'
 import Pet from './Pet'
 
 export default function UserPets(props) {
+  if (props.pets.length >= 1) {
   return (
-    <div>
+
+    <div className="right">
       <h1>Your pets:</h1>
-      <ul>
-        {props.pets.map((pet, i) => (
-            <li key={i}><Pet key={i} id={pet.id} name={pet.name} age={pet.age} picture={pet.picture}/>{pet.id}</li>
+        <ul>
+          {props.pets.map((pet, i) => {
+            return (
+              <li key={i}><Pet key={i} id={pet.id} name={pet.name} age={pet.age} picture={pet.picture}/>{pet.id}</li>
             )
-          )}
+          })}
       </ul>
     </div>
   )
+  } else {
+    return (
+      <h3>loading pets...</h3>
+    )
+  }
 }
+
   // constructor(){
   //   super()
   //   this.state = {

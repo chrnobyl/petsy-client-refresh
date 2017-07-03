@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Pet from './Pet'
+import '../App.css';
+
 
 export default function PetList(props) {
   return (
