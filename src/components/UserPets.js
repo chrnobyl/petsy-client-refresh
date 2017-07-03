@@ -1,66 +1,31 @@
 import React, { Component } from 'react'
+import { Image, List } from 'semantic-ui-react'
 import PetAdapter from '../adapters/PetAdapter'
 import Pet from './Pet'
 
 export default function UserPets(props) {
   if (props.pets.length >= 1) {
   return (
-
     <div className="right">
-      <h1>Your pets:</h1>
-        <ul>
-          {props.pets.map((pet, i) => {
-            return (
-              <li key={i}><Pet key={i} id={pet.id} name={pet.name} age={pet.age} picture={pet.picture}/>{pet.id}</li>
-            )
-          })}
-      </ul>
+      <List animated verticalAlign='middle'>
+        {props.pets.map((pet, i) => {
+          return (
+            <List.Item key={i}>
+              <Image avatar src={pet.picture} />
+              <List.Content>
+                <List.Header>
+                  {pet.name}
+                </List.Header>
+              </List.Content>
+            </List.Item>
+          )
+        })}
+      </List>
     </div>
   )
   } else {
     return (
-      <h3>loading pets...</h3>
+      <h2 align="right">loading pets...</h2>
     )
   }
 }
-
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     userPets: []
-  //   }
-  //   this.listUserPets = this.listUserPets.bind(this)
-  // }
-
-  // componentDidMount(){
-  //   PetAdapter.allUserPets()
-  //   .then(data => {
-  //     this.setState({ userPets: data })
-  //   })
-  // }
-  //
-  // listUserPets(){
-  //   return this.state.userPets.map((userPet) => {
-  //     return this.props.pets.map((pet, i) => {
-  //       if (userPet.pet_id === pet.id) {
-  //         return (
-  //           <Pet key={i} id={pet.id} name={pet.name} age={pet.age} picture={pet.picture}/>
-  //         )
-  //       }
-  //     })
-  //   })
-  // }
-
-
-  //
-  // render(){
-//     return (
-//       <div>
-//         <h1>Your pets:</h1>
-//         {this.props.pets.map((pet) => {
-//           pet.name
-//         })}
-//       </div>
-//     )
-//   }
-// }
