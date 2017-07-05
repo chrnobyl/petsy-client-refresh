@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { Image, List } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Image, List, Dimmer, Loader, Segment  } from 'semantic-ui-react'
 import PetAdapter from '../adapters/PetAdapter'
-import Pet from './Pet'
+// import PetDetail from './PetDetail'
 
 export default function UserPets(props) {
   if (props.pets.length >= 1) {
   return (
     <div className="right">
-      <List animated verticalAlign='middle'>
+      <List animated verticalAlign='middle' size="massive">
         {props.pets.map((pet, i) => {
           return (
-            <List.Item key={i}>
+            <List.Item key={i} as={ Link } to={`/pets/${pet.id}`} >
               <Image avatar src={pet.picture} />
               <List.Content>
                 <List.Header>
@@ -25,7 +26,9 @@ export default function UserPets(props) {
   )
   } else {
     return (
-      <h2 align="right">loading pets...</h2>
+      <div className="right">
+        <h2>Choose a pet to get started.</h2>
+      </div>
     )
   }
 }
