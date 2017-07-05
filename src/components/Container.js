@@ -79,7 +79,6 @@ export default class Container extends Component {
       <div>
         <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} />
         <UserPets className="element" pets={this.state.userPets} />
-        <FilterForm selected={this.state.selected} />
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
@@ -90,6 +89,7 @@ export default class Container extends Component {
               }
               return <PetDetail pet={pet} />
             }} />
+            <Route exact path='/users/1' render={ <FilterForm selected={this.state.selected} />} />
         </Switch>
       </div>
     )

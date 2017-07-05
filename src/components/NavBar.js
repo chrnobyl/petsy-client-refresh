@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
@@ -13,7 +14,7 @@ export default class NavBar extends Component {
       <Segment inverted>
         <Menu inverted secondary>
           <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick} />
+          <Menu.Item as={ Link } to={'/users/1'} name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick} />
           <Menu.Item name='pets' active={activeItem === 'pets'} onClick={this.handleItemClick} />
         </Menu>
       </Segment>

@@ -7,7 +7,7 @@ const PetDetail = (props) => {
   return (
     <div className="center">
       <Segment>
-        <div>id: {props.pet.id} Name: {props.pet.name}, Age: {props.pet.age}</div>
+        <div><h3>{props.pet.name}, Age {props.pet.age}</h3></div>
         <div className="pics"><img src={props.pet.picture} /></div>
         <div className="pics">{props.pet.description}</div>
       </Segment>
