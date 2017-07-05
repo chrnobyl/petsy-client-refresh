@@ -1,10 +1,4 @@
 const baseUrl = 'http://localhost:3000/api/v1'
-let species = ""
-let minAge = ""
-let maxAge = ""
-let sex = ""
-let color = ""
-let shelter = ""
 
 export default class PetAdapter  {
   static all(){

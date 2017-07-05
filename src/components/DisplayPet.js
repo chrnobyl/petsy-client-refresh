@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Icon, Image, Button, Segment, Dimmer, Loader } from 'semantic-ui-react'
 // import PetDetail from './PetDetail'
 
 const DisplayPet = (props) => {
@@ -7,11 +8,13 @@ const DisplayPet = (props) => {
   function returnPet(props) {
     if (props.pet === undefined) {
       return (
-        <h3>loading pet...</h3>
+        <Dimmer active inverted>
+          <Loader inverted>Looking for pets...</Loader>
+        </Dimmer>
       )
     } else {
       return (
-        <Card>
+        <Card as={ Link } to={`/pets/${props.pet.id}`}>
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header>
@@ -22,9 +25,6 @@ const DisplayPet = (props) => {
                 Age {props.pet.age}
               </span>
             </Card.Meta>
-            <Card.Description>
-              {props.pet.description}
-            </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>
