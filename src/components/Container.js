@@ -15,18 +15,20 @@ export default class Container extends Component {
       petNum: 1,
       pets: [],
       userPets: [],
-      detail: false
+      detail: false,
+      modal: false
     }
 
     this.yesPet = this.yesPet.bind(this)
     this.noPet = this.noPet.bind(this)
     this.showDetail = this.showDetail.bind(this)
+    this.showModal = this.showModal.bind(this)
+    this.deleteUserPet = this.deleteUserPet.bind(this)
   }
 
   componentDidMount(){
     PetAdapter.all()
     .then(data => {
-      data.filter(d => d.sex === "female")
       this.setState({ pets: data })
     })
     PetAdapter.allUserPets()
@@ -38,16 +40,24 @@ export default class Container extends Component {
 
   yesPet(){
     let newPetNum = this.state.petNum + 1
-    PetAdapter.createUserPet(this.state.petNum)
-    .then( resp => (
-      PetAdapter.allUserPets()
-      .then(data => {
-        this.setState({
-          petNum: newPetNum,
-          userPets: data
-        })
-      }))
-    )
+    let userPetIds = this.state.userPets.map(u => u.id)
+    if (userPetIds.includes(newPetNum) === false){
+      console.log(this.state.userPets)
+      PetAdapter.createUserPet(this.state.petNum)
+      .then( resp => (
+        PetAdapter.allUserPets()
+        .then(data => {
+          this.setState({
+            petNum: newPetNum,
+            userPets: data
+          })
+        }))
+      )
+    } else {
+      this.setState({
+        petNum: newPetNum
+      })
+    }
   }
 
   noPet(){
@@ -64,6 +74,24 @@ export default class Container extends Component {
     })
   }
 
+  showModal(){
+    console.log("modal")
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
+
+  deleteUserPet(id){
+    PetAdapter.destroyUserPet(id)
+    .then( () => {
+      this.setState(prevState => {
+        return {
+          userPets: prevState.userPets.filter(pet => pet.id !== id)
+        }
+      })
+    })
+  }
+
   handleKeyDown(event){
     event.preventDefault()
     console.log(this.state.petNum)
@@ -73,6 +101,8 @@ export default class Container extends Component {
       return this.noPet()
     } else if (event.keyCode === 40){
       return this.showDetail()
+    } else if (event.keyCode === 38){
+      return this.showModal()
     }
   }
 
@@ -81,6 +111,7 @@ export default class Container extends Component {
       <div>
         <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
         <UserPets className="element" pets={this.state.userPets} />
+        <FilterForm show={this.state.modal} onClose={this.showModal}/>
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
@@ -89,11 +120,11 @@ export default class Container extends Component {
                 routerProps.history.push("/pets")
                 return null
                 } else {
-                  return <PetDetail pet={pet} />
+                  return <PetDetail pet={pet} deleteUserPet={this.deleteUserPet} />
                 }
               }}
             />
-          <Route exact path='/users/1' render={ <FilterForm />} />
+          {/* <Route exact path='/users/1' render={ <FilterForm />} /> */}
         </Switch>
       </div>
     )
