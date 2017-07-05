@@ -15,7 +15,7 @@ export default class Container extends Component {
       petNum: 1,
       pets: [],
       userPets: [],
-      selected: []
+      detail: false
     }
 
     this.yesPet = this.yesPet.bind(this)
@@ -59,7 +59,9 @@ export default class Container extends Component {
 
   showDetail(){
     console.log("detail")
-    // routerProps.history.push(`/pets/${this.state.petNum}`)
+    this.setState({
+      detail: !this.state.detail
+    })
   }
 
   handleKeyDown(event){
@@ -77,7 +79,7 @@ export default class Container extends Component {
   render(){
     return (
       <div>
-        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} />
+        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
         <UserPets className="element" pets={this.state.userPets} />
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
@@ -86,10 +88,12 @@ export default class Container extends Component {
                 if(!pet){
                 routerProps.history.push("/pets")
                 return null
-              }
-              return <PetDetail pet={pet} />
-            }} />
-            <Route exact path='/users/1' render={ <FilterForm selected={this.state.selected} />} />
+                } else {
+                  return <PetDetail pet={pet} />
+                }
+              }}
+            />
+          <Route exact path='/users/1' render={ <FilterForm />} />
         </Switch>
       </div>
     )
