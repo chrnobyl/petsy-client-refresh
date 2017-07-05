@@ -4,7 +4,6 @@ import { Card, Icon, Image, Button, Segment, Dimmer, Loader } from 'semantic-ui-
 // import PetDetail from './PetDetail'
 
 const DisplayPet = (props) => {
-
   function returnPet(props) {
     if (props.pet === undefined) {
       return (
@@ -12,9 +11,9 @@ const DisplayPet = (props) => {
           <Loader inverted>Looking for pets...</Loader>
         </Dimmer>
       )
-    } else {
+    } else if (props.detail === true){
       return (
-        <Card as={ Link } to={`/pets/${props.pet.id}`}>
+        <Card>
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header>
@@ -28,7 +27,38 @@ const DisplayPet = (props) => {
           </Card.Content>
           <Card.Content extra>
             <a>
-              <Icon name="user" />
+              <Icon name="home" />
+              North Shore Animal League
+            </a>
+            <Button secondary onClick={props.noPet}>Next</Button>
+            <Button
+              color="green"
+              content="Adopt"
+              icon="heart" onClick={props.yesPet}
+            />
+          </Card.Content>
+          <Card.Content extra>
+            <p>{props.pet.description}</p>
+          </Card.Content>
+        </Card>
+      )
+    } else {
+      return (
+        <Card>
+          <Image src={props.pet.picture} size="huge"/>
+          <Card.Content>
+            <Card.Header>
+              {props.pet.name}
+            </Card.Header>
+            <Card.Meta>
+              <span className="age">
+                Age {props.pet.age}
+              </span>
+            </Card.Meta>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name="home" />
               North Shore Animal League
             </a>
             <Button secondary onClick={props.noPet}>Next</Button>
