@@ -15,6 +15,7 @@ export default class Container extends Component {
       petNum: 1,
       pets: [],
       userPets: [],
+      userPetIds: [],
       detail: false,
       modal: false
     }
@@ -33,32 +34,44 @@ export default class Container extends Component {
     })
     PetAdapter.allUserPets()
     .then(data => {
-      this.setState({ userPets: data })
+      this.setState({
+        userPets: data,
+        userPetIds: data.map(d => d.id)
+      })
     })
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
+
   yesPet(){
     let newPetNum = this.state.petNum + 1
-    let userPetIds = this.state.userPets.map(u => u.id)
-    if (userPetIds.includes(newPetNum) === false){
-      console.log(this.state.userPets)
-      PetAdapter.createUserPet(this.state.petNum)
-      .then( resp => (
-        PetAdapter.allUserPets()
-        .then(data => {
-          this.setState({
-            petNum: newPetNum,
-            userPets: data
-          })
-        }))
-      )
-    } else {
+    console.log(this.state.userPetIds)
+    console.log(newPetNum)
+    if (this.state.userPetIds.includes(this.state.petNum)){
       this.setState({
         petNum: newPetNum
       })
+    } else {
+      PetAdapter.createUserPet(this.state.petNum)
+      .then(res => {
+        this.setState((prevState) => ({
+          petNum: newPetNum,
+          userPets: [...prevState.userPets, res],
+          userPetIds: [...prevState.userPetIds, res.pet_id]
+        }))
+      })
+      //   PetAdapter.allUserPets()
+      //   .then(data => {
+      //     this.setState({
+      //       petNum: newPetNum,
+      //       userPets: data,
+      //       userPetIds: data.map(d => d.id)
+      //     })
+      //   }))
+      // )
     }
   }
+
 
   noPet(){
     console.log("no")
@@ -84,11 +97,14 @@ export default class Container extends Component {
   deleteUserPet(id){
     PetAdapter.destroyUserPet(id)
     .then( () => {
+      console.log(this.state.userPets)
       this.setState(prevState => {
         return {
-          userPets: prevState.userPets.filter(pet => pet.id !== id)
+          userPets: prevState.userPets.filter(pet => pet.id !== id),
+          userPetIds: prevState.userPetIds.filter(num => num !== id)
         }
       })
+      console.log(this.state.userPets)
     })
   }
 

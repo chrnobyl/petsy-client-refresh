@@ -7,7 +7,7 @@ export default class PetAdapter  {
   }
 
   static allUserPets(){
-    return fetch(`${baseUrl}/user_pets`)
+    return fetch(`${baseUrl}/users/1/user_pets`)
     .then( res => res.json())
   }
 
@@ -32,7 +32,7 @@ export default class PetAdapter  {
   // }
 
   static createUserPet(pet_id){
-    return fetch(`${baseUrl}/user_pets`, {
+    return fetch(`${baseUrl}/users/1/user_pets`, {
       method: 'POST',
       headers: this.headers(),
       body: JSON.stringify({

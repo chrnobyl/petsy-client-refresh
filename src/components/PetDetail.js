@@ -3,7 +3,6 @@ import { Segment, Button } from 'semantic-ui-react'
 import '../App.css';
 
 const PetDetail = (props) => {
-  debugger
   return (
     <div className="center">
       <Segment>

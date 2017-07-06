@@ -5,7 +5,7 @@ const FilterForm = (props) => (
   <Modal trigger={<Button>Show User Preferences</Button>}>
     <Modal.Header>Filter pets by:</Modal.Header>
     <Modal.Content image>
-      <form onSubmit={console.log("submitted")}>
+      <form onSubmit={console.log("hi")}>
         <select name="category" value={props.selected}>
           <option value="1">Male</option>
           <option value="2">Female</option>
