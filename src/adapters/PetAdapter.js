@@ -11,6 +11,11 @@ export default class PetAdapter  {
     .then( res => res.json())
   }
 
+  static allShelters(){
+    return fetch(`${baseUrl}/shelters`)
+    .then( res => res.json())
+  }
+
   // static createPet(){
   //   return fetch(`${this.url()}`, {
   //     method: 'POST',

@@ -16,6 +16,7 @@ export default class Container extends Component {
       pets: [],
       userPets: [],
       userPetIds: [],
+      shelters: [],
       detail: false,
       modal: false
     }
@@ -39,9 +40,14 @@ export default class Container extends Component {
         userPetIds: data.map(d => d.id)
       })
     })
+    PetAdapter.allShelters()
+    .then(data => {
+      this.setState({
+        shelters: data
+      })
+    })
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
-
 
   yesPet(){
     let newPetNum = this.state.petNum + 1
@@ -60,18 +66,8 @@ export default class Container extends Component {
           userPetIds: [...prevState.userPetIds, res.pet_id]
         }))
       })
-      //   PetAdapter.allUserPets()
-      //   .then(data => {
-      //     this.setState({
-      //       petNum: newPetNum,
-      //       userPets: data,
-      //       userPetIds: data.map(d => d.id)
-      //     })
-      //   }))
-      // )
     }
   }
-
 
   noPet(){
     console.log("no")
@@ -127,7 +123,7 @@ export default class Container extends Component {
       <div>
         <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
         <UserPets className="element" pets={this.state.userPets} />
-        <FilterForm show={this.state.modal} onClose={this.showModal}/>
+        <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters}/>
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
