@@ -7,7 +7,7 @@ export default class PetAdapter  {
   }
 
   static allUserPets(){
-    return fetch(`${baseUrl}/user_pets`)
+    return fetch(`${baseUrl}/users/1/user_pets`)
     .then( res => res.json())
   }
 
@@ -32,7 +32,7 @@ export default class PetAdapter  {
   // }
 
   static createUserPet(pet_id){
-    return fetch(`${baseUrl}/user_pets`, {
+    return fetch(`${baseUrl}/users/1/user_pets`, {
       method: 'POST',
       headers: this.headers(),
       body: JSON.stringify({
@@ -42,26 +42,10 @@ export default class PetAdapter  {
         }
       })
     }).then(response => response.json() )
-    // .then(window.location.href = "http://localhost:3001/foods")
   }
 
-  // static update(food){
-  //   return fetch(`${this.url()}/${food.id}`, {
-  //     method: 'PATCH',
-  //     headers: this.headers(),
-  //     body: JSON.stringify({
-  //       food: {
-  //         name: food.name.value,
-  //         expiration_date: food.expiration_date.value,
-  //         quantity: food.quantity.value,
-  //         category_id: food.category_id.value
-  //       }
-  //     })
-  //   })
-  // }
-
-  static destroy(id){
-    return fetch(`${this.url()}/${id}`, {
+  static destroyUserPet(id){
+    return fetch(`${baseUrl}/users/1/user_pets/${id}`, {
       method: 'DELETE'
     }).then(res => res.json() )
   }

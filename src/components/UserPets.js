@@ -27,7 +27,7 @@ export default function UserPets(props) {
   } else {
     return (
       <div className="right">
-        <h2>Choose a pet to get started.</h2>
+        <h2>No pets yet!</h2>
       </div>
     )
   }
