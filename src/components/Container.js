@@ -26,6 +26,7 @@ export default class Container extends Component {
     this.showDetail = this.showDetail.bind(this)
     this.showModal = this.showModal.bind(this)
     this.deleteUserPet = this.deleteUserPet.bind(this)
+    this.uniq = this.uniq.bind(this)
   }
 
   componentDidMount(){
@@ -36,7 +37,7 @@ export default class Container extends Component {
     PetAdapter.allUserPets()
     .then(data => {
       this.setState({
-        userPets: data,
+        userPets: data.filter((d, i) => data.indexOf(d) === i),
         userPetIds: data.map(d => d.id)
       })
     })
@@ -47,6 +48,10 @@ export default class Container extends Component {
       })
     })
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
+  }
+
+  uniq(array) {
+   return Array.from(new Set(array));
   }
 
   yesPet(){
@@ -62,7 +67,7 @@ export default class Container extends Component {
       .then(res => {
         this.setState((prevState) => ({
           petNum: newPetNum,
-          userPets: [...prevState.userPets, res],
+          userPets: [...prevState.userPets, res].filter(pet => pet.id !== newPetNum),
           userPetIds: [...prevState.userPetIds, res.pet_id]
         }))
       })
@@ -102,6 +107,7 @@ export default class Container extends Component {
       })
       console.log(this.state.userPets)
     })
+    debugger
   }
 
   handleKeyDown(event){

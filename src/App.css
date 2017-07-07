@@ -27,16 +27,16 @@
   max-width: 400px;
 }
 
-.center
-{
-  width: 1000px;
+.center {
+  max-width: 1000px;
+  max-height: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .right {
-    float: right;
-    margin-left: auto;
-    margin-right: 200px;
+  float: right;
+  margin-left: auto;
+  margin-right: 200px;
 }
