@@ -8,7 +8,7 @@ export default function UserPets(props) {
   if (props.pets.length >= 1) {
   return (
     <div className="right">
-      <List divided relaxed verticalAlign='middle' size="massive">
+      <List divided relaxed verticalAlign="middle" size="massive">
         {props.pets.map((pet, i) => {
           return (
             <List.Item key={i}>
@@ -17,7 +17,7 @@ export default function UserPets(props) {
                 <List.Header as={ Link } to={`/pets/${pet.id}`}>
                   {pet.name}
                 </List.Header>
-                <Modal trigger={<Button>Pet Details</Button>}>
+                <Modal trigger={<Button>Pet Details</Button>} closeIcon="close">
                   <Modal.Content>
                     <div><h3>{pet.name}, Age {pet.age}</h3></div>
                     <div className="pics"><img src={pet.picture} /></div>
