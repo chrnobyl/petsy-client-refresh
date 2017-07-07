@@ -100,9 +100,18 @@ export default class Container extends Component {
 
   noPet(){
     console.log("no")
-    this.setState((prevState) => {
-      petNum: prevState.petNum += 1
-    })
+    let newPetArray = this.state.pets
+    newPetArray.shift()
+    if (newPetArray.length > 1) {
+      this.setState((prevState) => ({
+        pets: newPetArray,
+        petNum: this.state.pets[0].id
+      }))
+    } else if (newPetArray.length <= 1) {
+      this.setState((prevState) => ({
+        pets: newPetArray,
+      }))
+    }
   }
 
   showDetail(){
