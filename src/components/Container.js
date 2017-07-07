@@ -55,19 +55,31 @@ export default class Container extends Component {
   }
 
   yesPet(){
+    debugger
     let newPetNum = this.state.petNum + 1
     console.log(this.state.userPetIds)
     console.log(newPetNum)
+    let newPetArray = this.state.pets
+    newPetArray.shift()
     if (this.state.userPetIds.includes(this.state.petNum)){
-      this.setState({
-        petNum: newPetNum
-      })
+      if (newPetArray.length > 1) {
+        this.setState((prevState) => ({
+          pets: newPetArray,
+          petNum: this.state.pets[0].id
+        }))
+      } else if (newPetArray.length === 1) {
+        this.setState((prevState) => ({
+          pets: newPetArray,
+          petNum: prevState.pets[0].id + 1
+        }))
+      }
     } else {
       PetAdapter.createUserPet(this.state.petNum)
       .then(res => {
         this.setState((prevState) => ({
-          petNum: newPetNum,
-          userPets: [...prevState.userPets, res].filter(pet => pet.id !== newPetNum),
+          pets: newPetArray,
+          petNum: this.state.pets[0].id,
+          userPets: [...prevState.userPets, res].filter(pet => pet.id !== newPetArray[0].id),
           userPetIds: [...prevState.userPetIds, res.pet_id]
         }))
       })
@@ -127,7 +139,7 @@ export default class Container extends Component {
   render(){
     return (
       <div>
-        <DisplayPet pet={this.state.pets[this.state.petNum - 1]} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
+        <DisplayPet pet={this.state.pets[0]} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
         <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters}/>
         <Switch>
