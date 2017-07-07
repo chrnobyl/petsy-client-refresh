@@ -14,7 +14,6 @@ const species = [
 
 
 const FilterForm = (props) => {
-  debugger
   let cities = props.shelters.map((shelter, i) => {
     return { key: i, text: shelter.city, value: shelter.city }
   })
@@ -22,18 +21,17 @@ const FilterForm = (props) => {
   return (
     <Modal trigger={<Button>Show User Preferences</Button>}>
       <Modal.Header>Filter pets by:</Modal.Header>
-      <Modal.Content image>
+      <Modal.Content>
         <Form size='big'>
           <Form.Group widths='equal'>
             <Form.Select label='Species' options={species} placeholder='Species' />
             <Form.Select label='Sex' options={sexes} placeholder='Sex' />
             <Form.Select label='City' options={cities} placeholder='City' />
             <Form.Field>
-                  <Checkbox label='Small' />
-                  <Checkbox label='Medium' />
-                  <Checkbox label='Large' />
+              <Checkbox label='Small' />
+              <Checkbox label='Medium' />
+              <Checkbox label='Large' />
             </Form.Field>
-            <Form.Field label='Zip code' control='input' placeholder='Zip code' />
           </Form.Group>
 
           <Form.Button>Submit</Form.Button>

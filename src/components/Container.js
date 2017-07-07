@@ -122,7 +122,7 @@ export default class Container extends Component {
     return (
       <div>
         <DisplayPet pet={this.state.pets[this.state.petNum - 1]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
-        <UserPets className="element" pets={this.state.userPets} />
+        <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
         <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters}/>
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
