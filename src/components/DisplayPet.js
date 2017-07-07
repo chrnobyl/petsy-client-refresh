@@ -7,9 +7,7 @@ const DisplayPet = (props) => {
   function returnPet(props) {
     if (props.pet === undefined) {
       return (
-        <Dimmer active inverted>
-          <Loader inverted>Looking for pets...</Loader>
-        </Dimmer>
+        <h3>No pets left, update your filter settings to see more pets.</h3>
       )
     } else if (props.detail === true){
       return (
