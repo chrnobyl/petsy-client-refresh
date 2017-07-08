@@ -11,16 +11,15 @@ const species = [
   { key: 'd', text: 'Dog', value: 'dog'}
 ]
 
-function handleSubmit(event) {
-  event.preventDefault()
-  debugger
-  this.props.createFood(event.target.children)
-}
-
 const FilterForm = (props) => {
   let cities = props.shelters.map((shelter, i) => {
     return { key: i, text: shelter.city, value: shelter.city }
   })
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    props.applyFilter(event.target.children)
+  }
 
   return (
     <Modal trigger={<Button>Show User Preferences</Button>}>

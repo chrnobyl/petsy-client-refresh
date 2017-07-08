@@ -36,21 +36,19 @@ export default class PetAdapter  {
   //   // .then(window.location.href = "http://localhost:3001/pets")
   // }
 
-//   static create(food){
-//   return fetch(`${this.url()}`, {
-//     method: 'POST',
-//     headers: this.headers(),
-//     body: JSON.stringify({
-//       food: {
-//         name: food.name.value,
-//         expiration_date: food.expiration_date.value,
-//         quantity: food.quantity.value,
-//         category_id: parseInt(food.category.value)
-//       }
-//     })
-//   }).then(response => response.json() )
-//   // .then(window.location.href = "http://localhost:3001/foods")
-// }
+  static getFilteredPets(values){
+    debugger
+    return fetch(`${this.url()}`, {
+    method: 'POST',
+    headers: this.headers(),
+    body: JSON.stringify({
+    
+    })
+    .then(response => response.json() )
+  // .then(window.location.href = "http://localhost:3001/foods")
+})
+  }
+
 
   static createUserPet(pet_id){
     return fetch(`${baseUrl}/users/1/user_pets`, {
