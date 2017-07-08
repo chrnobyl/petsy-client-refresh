@@ -18,7 +18,8 @@ export default class Container extends Component {
       userPetIds: [],
       shelters: [],
       detail: false,
-      modal: false
+      modal: false,
+      form: []
     }
 
     this.yesPet = this.yesPet.bind(this)
@@ -26,7 +27,7 @@ export default class Container extends Component {
     this.showDetail = this.showDetail.bind(this)
     this.showModal = this.showModal.bind(this)
     this.deleteUserPet = this.deleteUserPet.bind(this)
-    this.uniq = this.uniq.bind(this)
+    this.applyFilter = this.applyFilter.bind(this)
   }
 
   componentDidMount(){
@@ -53,12 +54,7 @@ export default class Container extends Component {
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
-  uniq(array) {
-   return Array.from(new Set(array));
-  }
-
   yesPet(){
-    // debugger
     console.log(this.state.userPetIds)
     let newPetArray = this.state.pets
     newPetArray.shift()
@@ -157,12 +153,16 @@ export default class Container extends Component {
     }
   }
 
+  applyFilter(values){
+    return PetAdapter.getFilteredPets(values)
+  }
+
   render(){
     return (
       <div>
         <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
-        <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters}/>
+        <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
         <Switch>
           <Route exact path='/pets/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
