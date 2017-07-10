@@ -4,7 +4,9 @@ import { Card, Icon, Image, Button, Segment, Dimmer, Loader } from 'semantic-ui-
 // import PetDetail from './PetDetail'
 
 const DisplayPet = (props) => {
+
   function returnPet(props) {
+
     if (props.pet === undefined) {
       return (
         <h3>No pets left, update your filter settings to see more pets.</h3>
@@ -26,7 +28,7 @@ const DisplayPet = (props) => {
           <Card.Content extra>
             <a>
               <Icon name="home" />
-              North Shore Animal League
+              {props.pet.shelter}
             </a>
             <Button secondary onClick={props.noPet}>Next</Button>
             <Button
@@ -58,7 +60,7 @@ const DisplayPet = (props) => {
           <Card.Content extra>
             <a>
               <Icon name="home" />
-              North Shore Animal League
+              {props.pet.shelter}
             </a>
             <Button secondary onClick={props.noPet}>Next</Button>
             <Button

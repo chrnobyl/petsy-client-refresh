@@ -37,19 +37,18 @@ export default class PetAdapter  {
   // }
 
   static getFilteredPets(pets){
-    debugger
     return fetch(`${this.url()}`, {
-    method: 'POST',
-    headers: this.headers(),
-    body: JSON.stringify({
-      species: pets.species.value,
-      sex: pets.sex.value,
-      city: pets.city.value
-
-    })
-    .then(response => response.json() )
-  // .then(window.location.href = "http://localhost:3001/foods")
-})
+      method: 'GET',
+      headers: this.headers(),
+      body: JSON.stringify({
+        species: pets.species,
+        sex: pets.sex,
+        city: pets.city,
+        size: pets.size,
+        age: pets.age
+      })
+    // .then(window.location.href = "http://localhost:3001/foods")
+    }).then(res => res.json() )
   }
 
 

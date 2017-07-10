@@ -19,7 +19,7 @@ export default function UserPets(props) {
                 </List.Header>
                 <Modal trigger={<Button>Pet Details</Button>} closeIcon="close">
                   <Modal.Content>
-                    <div><h3>{pet.name}, Age {pet.age}</h3></div>
+                    <div><h3>{pet.name}, Age: {pet.age}</h3></div>
                     <div className="pics"><img src={pet.picture} /></div>
                     <div className="pics">{pet.description}</div>
                     <Button onClick={() => props.deleteUserPet(pet.id)}>Remove pet from list</Button>
