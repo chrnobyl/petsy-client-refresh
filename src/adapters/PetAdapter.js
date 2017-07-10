@@ -36,13 +36,16 @@ export default class PetAdapter  {
   //   // .then(window.location.href = "http://localhost:3001/pets")
   // }
 
-  static getFilteredPets(values){
+  static getFilteredPets(pets){
     debugger
     return fetch(`${this.url()}`, {
     method: 'POST',
     headers: this.headers(),
     body: JSON.stringify({
-    
+      species: pets.species.value,
+      sex: pets.sex.value,
+      city: pets.city.value
+
     })
     .then(response => response.json() )
   // .then(window.location.href = "http://localhost:3001/foods")
