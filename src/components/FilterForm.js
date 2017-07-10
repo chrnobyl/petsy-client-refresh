@@ -17,6 +17,7 @@ const FilterForm = (props) => {
   })
 
   function handleSubmit(event) {
+    debugger
     event.preventDefault()
     props.applyFilter(event.target.children)
   }
