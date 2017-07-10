@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { browserHistory } from 'react-router';
 import PetAdapter from '../adapters/PetAdapter'
-import PetList from './PetList'
 import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'

@@ -19,7 +19,7 @@ const DisplayPet = (props) => {
             </Card.Header>
             <Card.Meta>
               <span className="age">
-                Age {props.pet.age}
+                Age: {props.pet.age}
               </span>
             </Card.Meta>
           </Card.Content>
@@ -34,6 +34,7 @@ const DisplayPet = (props) => {
               content="Adopt"
               icon="heart" onClick={props.yesPet}
             />
+            <Button secondary onClick={props.showDetail}>Bio</Button>
           </Card.Content>
           <Card.Content extra>
             <p>{props.pet.description}</p>
@@ -50,7 +51,7 @@ const DisplayPet = (props) => {
             </Card.Header>
             <Card.Meta>
               <span className="age">
-                Age {props.pet.age}
+                Age: {props.pet.age}
               </span>
             </Card.Meta>
           </Card.Content>
