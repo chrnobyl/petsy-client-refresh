@@ -47,7 +47,13 @@ export default class FilterForm extends Component {
 
     handleSubmit(event) {
       event.preventDefault()
-      this.props.applyFilter(this.state)
+      let stateObj = this.state
+      for (var key in stateObj) {
+        if (stateObj[key] === ""){
+          delete stateObj[key]
+        }
+      }
+      this.props.applyFilter(stateObj)
     }
 
     render(){

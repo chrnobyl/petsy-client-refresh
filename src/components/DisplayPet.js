@@ -26,17 +26,19 @@ const DisplayPet = (props) => {
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
-            <a>
+            <a href={`mailto:${props.pet.email}`}>
               <Icon name="home" />
               {props.pet.shelter}
             </a>
+            <div>
             <Button secondary onClick={props.noPet}>Next</Button>
+            <Button color="purple" onClick={props.showDetail}>Bio</Button>
             <Button
               color="green"
               content="Adopt"
               icon="heart" onClick={props.yesPet}
             />
-            <Button secondary onClick={props.showDetail}>Bio</Button>
+          </div>
           </Card.Content>
           <Card.Content extra>
             <p>{props.pet.description}</p>
@@ -62,12 +64,15 @@ const DisplayPet = (props) => {
               <Icon name="home" />
               {props.pet.shelter}
             </a>
+            <div>
             <Button secondary onClick={props.noPet}>Next</Button>
+            <Button color="purple" onClick={props.showDetail}>Bio</Button>
             <Button
               color="green"
               content="Adopt"
               icon="heart" onClick={props.yesPet}
             />
+          </div>
           </Card.Content>
         </Card>
       )

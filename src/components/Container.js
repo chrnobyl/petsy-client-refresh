@@ -151,8 +151,33 @@ export default class Container extends Component {
     }
   }
 
-  applyFilter(pets){
-    PetAdapter.getFilteredPets(pets)
+  applyFilter(filter){
+    // debugger
+    // this.setState((prevState) => {
+    //   pets: prevState.pets.filter(pet => ({
+    //     if(filter.species !== undefined){
+    //       return pet.species === filter.species
+    //     }
+        // if(filter.sex !== undefined){
+        //   return pet.sex === filter.sex
+        // }
+        // if(filter.city !== undefined){
+        //   return pet.city === filter.city
+        // }
+        // if(filter.size !== undefined){
+        //   return pet.size === filter.size
+        // }
+        // if(filter.age !== undefined){
+        //   return pet.age === filter.age
+        // }
+      // }))
+    PetAdapter.getFilteredPets(filter)
+    .then(data => {
+      this.setState({
+        petNum: data[0].id,
+        pets: data
+       })
+    })
   }
 
   render(){
