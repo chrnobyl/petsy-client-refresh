@@ -135,7 +135,6 @@ export default class Container extends Component {
       })
       console.log(this.state.userPets)
     })
-    debugger
   }
 
   handleKeyDown(event){
@@ -152,30 +151,25 @@ export default class Container extends Component {
     }
   }
 
-  applyFilter(values){
-    return PetAdapter.getFilteredPets(values)
+  applyFilter(filter){
+    PetAdapter.getFilteredPets(filter)
+    .then(data => {
+      debugger
+      if (data[0] !== undefined){
+        this.setState({
+          petNum: data[0].id,
+          pets: data
+        })
+      }
+    })
   }
 
   render(){
     return (
       <div>
-        <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} />
+        <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
         <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
-        <Switch>
-          <Route exact path='/pets/:id' render={(routerProps) => {
-              const id = routerProps.match.params.id
-              const pet = this.state.pets.find( p =>  p.id === parseInt(id) )
-                if(!pet){
-                routerProps.history.push("/pets")
-                return null
-                } else {
-                  return <PetDetail pet={pet} deleteUserPet={this.deleteUserPet} />
-                }
-              }}
-            />
-          {/* <Route exact path='/users/1' render={ <FilterForm />} /> */}
-        </Switch>
       </div>
     )
   }

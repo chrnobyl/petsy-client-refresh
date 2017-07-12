@@ -17,11 +17,12 @@ export default function UserPets(props) {
                 <List.Header as={ Link } to={`/pets/${pet.id}`}>
                   {pet.name}
                 </List.Header>
-                <Modal trigger={<Button>Pet Details</Button>} closeIcon="close">
+                <Modal trigger={<Button>Pet Details</Button>} closeIcon="close" size="small">
                   <Modal.Content>
-                    <div><h3>{pet.name}, Age {pet.age}</h3></div>
-                    <div className="pics"><img src={pet.picture} /></div>
-                    <div className="pics">{pet.description}</div>
+                    <div><h3>{pet.name}, Age: {pet.age}</h3></div>
+                    <div><Image src={pet.picture} size="large"/></div>
+                    <div>{pet.description}</div>
+                    <div><h4>To set up a meeting with {pet.name}, send an email to the shelter at {pet.email}.</h4></div>
                     <Button onClick={() => props.deleteUserPet(pet.id)}>Remove pet from list</Button>
                   </Modal.Content>
                 </Modal>

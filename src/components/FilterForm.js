@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react'
 
 const sexes = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
+  { key: 'm', text: 'Male', value: 'M' },
+  { key: 'f', text: 'Female', value: 'F' },
 ]
 
 const species = [
@@ -11,38 +11,78 @@ const species = [
   { key: 'd', text: 'Dog', value: 'dog'}
 ]
 
-const FilterForm = (props) => {
-  let cities = props.shelters.map((shelter, i) => {
-    return { key: i, text: shelter.city, value: shelter.city }
-  })
+const sizes = [
+  { key: 's', text: 'Small', value: 'S'},
+  { key: 'm', text: 'Medium', value: 'M'},
+  { key: 'l', text: 'Large', value: 'L'}
+]
 
-  function handleSubmit(event) {
-    debugger
-    event.preventDefault()
-    props.applyFilter(event.target.children)
+const ages = [
+  { key: 'b', text: 'Baby', value: 'Baby'},
+  { key: 'y', text: 'Young', value: 'Young'},
+  { key: 'a', text: 'Adult', value: 'Adult'}
+]
+
+export default class FilterForm extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      species: "",
+      sex: "",
+      city: "",
+      age: "",
+      size: ""
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
-  return (
-    <Modal trigger={<Button>Show User Preferences</Button>}>
-      <Modal.Header>Filter pets by:</Modal.Header>
-      <Modal.Content>
-        <Form size='big' onSubmit={handleSubmit}>
-          <Form.Group widths='equal'>
-            <Form.Select label='Species' options={species} placeholder='Species' />
-            <Form.Select label='Sex' options={sexes} placeholder='Sex' />
-            <Form.Select label='City' options={cities} placeholder='City' />
-            <Form.Field>
-              <Checkbox label='Small' />
-              <Checkbox label='Medium' />
-              <Checkbox label='Large' />
-            </Form.Field>
-          </Form.Group>
+    handleChange(event, result) {
+      this.setState({
+        [result.placeholder]: result.value
+      })
+    }
 
-          <Form.Button>Submit</Form.Button>
-        </Form>
-      </Modal.Content>
-    </Modal>
-  )
-}
+    handleSubmit(event) {
+      event.preventDefault()
+      let stateObj = this.state
+      for (var key in stateObj) {
+        if (stateObj[key] === ""){
+          delete stateObj[key]
+        }
+      }
+      this.props.applyFilter(stateObj)
+    }
 
-export default FilterForm
+    render(){
+      let cities = this.props.shelters.map((shelter, i) => {
+        return { key: i, text: shelter.city, value: shelter.city }
+      })
+
+      return (
+        <Modal size='fullscreen' trigger={<Button>Show User Preferences</Button>}>
+          <Modal.Header>Filter pets by:</Modal.Header>
+          <Modal.Content>
+            <Form size='large' onSubmit={this.handleSubmit}>
+              <Form.Group widths='equal'>
+                <Form.Select label='Species' options={species} placeholder='species' onChange={this.handleChange} />
+                <Form.Select label='Sex' options={sexes} placeholder='sex' onChange={this.handleChange} />
+                <Form.Select label='City' options={cities} placeholder='city' onChange={this.handleChange} />
+                <Form.Select label='Size' options={sizes} placeholder='size' onChange={this.handleChange} />
+                <Form.Select label='Age' options={ages} placeholder='age' onChange={this.handleChange} />
+                {/* <Form.Field>
+                  <Checkbox label='Small' onChange={this.handleChange}/>
+                  <Checkbox label='Medium' onChange={this.handleChange}/>
+                  <Checkbox label='Large' onChange={this.handleChange}/>
+                </Form.Field> */}
+              </Form.Group>
+
+              <Form.Button>Submit</Form.Button>
+            </Form>
+          </Modal.Content>
+        </Modal>
+      )
+    }
+  }

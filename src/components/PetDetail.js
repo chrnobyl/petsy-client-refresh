@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
+import { Grid, Menu, Segment, Button, Modal } from 'semantic-ui-react'
 import '../App.css';
 
 const PetDetail = (props) => {

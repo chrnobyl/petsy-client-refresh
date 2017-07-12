@@ -28,8 +28,8 @@
 }
 
 .center {
-  max-width: 1000px;
-  max-height: 300px;
+  max-width: 75%;
+  max-height: 0px;
   display: block;
   margin-left: auto;
   /*margin-right: auto;*/
@@ -38,5 +38,35 @@
 .right {
   float: right;
   margin-left: auto;
-  margin-right: 200px;
+  margin-right: 10%;
+}
+
+.floatright {
+  float: right;
+}
+
+.ui-card {
+    max-width: 50%;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 290px;
+    min-height: 0;
+    background: #fff;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    -webkit-transition: box-shadow .1s ease,-webkit-transform .1s ease;
+    transition: box-shadow .1s ease,-webkit-transform .1s ease;
+    -webkit-transition: -webkit-box-shadow .1s ease,-webkit-transform .1s ease;
+    transition: -webkit-box-shadow .1s ease,-webkit-transform .1s ease;
+    -o-transition: box-shadow .1s ease,transform .1s ease;
+    transition: box-shadow .1s ease,transform .1s ease;
+    transition: box-shadow .1s ease,transform .1s ease,-webkit-box-shadow .1s ease,-webkit-transform .1s ease;
+    transition: box-shadow .1s ease,transform .1s ease,-webkit-transform .1s ease;
+    z-index: '';
 }

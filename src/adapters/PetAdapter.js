@@ -37,19 +37,13 @@ export default class PetAdapter  {
   // }
 
   static getFilteredPets(pets){
-    debugger
+    let query = JSON.stringify(pets)
     return fetch(`${this.url()}`, {
-    method: 'POST',
-    headers: this.headers(),
-    body: JSON.stringify({
-      species: pets.species.value,
-      sex: pets.sex.value,
-      city: pets.city.value
-
-    })
-    .then(response => response.json() )
-  // .then(window.location.href = "http://localhost:3001/foods")
-})
+      method: 'POST',
+      headers: this.headers(),
+      body: query
+    // .then(window.location.href = "http://localhost:3001/foods")
+    }).then(res => res.json() )
   }
 
 
@@ -63,7 +57,7 @@ export default class PetAdapter  {
           pet_id: pet_id
         }
       })
-    }).then(response => response.json() )
+    }).then(res => res.json() )
   }
 
   static destroyUserPet(id){
