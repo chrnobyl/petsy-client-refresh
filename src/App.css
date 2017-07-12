@@ -27,11 +27,19 @@
   max-width: 400px;
 }
 
+.img {
+  display: block;
+  margin: auto;
+  width: 40%;
+}
+
 .center {
-  max-width: 75%;
+  width: 25%;
+  text-align: center;
   max-height: 0px;
   display: block;
-  margin-left: auto;
+  margin: auto;
+  /*position: relative;*/
   /*margin-right: auto;*/
 }
 

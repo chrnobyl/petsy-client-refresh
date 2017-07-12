@@ -2,22 +2,26 @@ import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react'
 
 const sexes = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'm', text: 'Male', value: 'M' },
   { key: 'f', text: 'Female', value: 'F' },
 ]
 
 const species = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'c', text: 'Cat', value: 'cat'},
   { key: 'd', text: 'Dog', value: 'dog'}
 ]
 
 const sizes = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 's', text: 'Small', value: 'S'},
   { key: 'm', text: 'Medium', value: 'M'},
   { key: 'l', text: 'Large', value: 'L'}
 ]
 
 const ages = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'b', text: 'Baby', value: 'Baby'},
   { key: 'y', text: 'Young', value: 'Young'},
   { key: 'a', text: 'Adult', value: 'Adult'}

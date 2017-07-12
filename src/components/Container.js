@@ -6,6 +6,7 @@ import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'
 import PetDetail from './PetDetail'
+import NavBar from './NavBar'
 
 export default class Container extends Component {
   constructor(){
@@ -54,7 +55,6 @@ export default class Container extends Component {
   }
 
   yesPet(){
-    console.log(this.state.userPetIds)
     let newPetArray = this.state.pets
     newPetArray.shift()
     if (this.state.userPetIds.includes(this.state.petNum)){
@@ -104,7 +104,7 @@ export default class Container extends Component {
       }))
     } else if (newPetArray.length <= 1) {
       this.setState((prevState) => ({
-        pets: newPetArray,
+        pets: newPetArray
       }))
     }
   }
@@ -126,7 +126,6 @@ export default class Container extends Component {
   deleteUserPet(id){
     PetAdapter.destroyUserPet(id)
     .then( () => {
-      console.log(this.state.userPets)
       this.setState(prevState => {
         return {
           userPets: prevState.userPets.filter(pet => pet.id !== id),
@@ -154,7 +153,6 @@ export default class Container extends Component {
   applyFilter(filter){
     PetAdapter.getFilteredPets(filter)
     .then(data => {
-      debugger
       if (data[0] !== undefined){
         this.setState({
           petNum: data[0].id,
@@ -163,6 +161,10 @@ export default class Container extends Component {
       }
     })
   }
+
+  // clearAllUserPets(){
+  //
+  // }
 
   render(){
     return (

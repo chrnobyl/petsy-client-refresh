@@ -13,10 +13,10 @@ const DisplayPet = (props) => {
       )
     } else if (props.detail === true){
       return (
-        <Card>
+        <Card raised="true" color="red">
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
-            <Card.Header>
+            <Card.Header color="green">
               {props.pet.name}
             </Card.Header>
             <Card.Meta>
@@ -47,7 +47,7 @@ const DisplayPet = (props) => {
       )
     } else {
       return (
-        <Card>
+        <Card raised={true}>
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header>
