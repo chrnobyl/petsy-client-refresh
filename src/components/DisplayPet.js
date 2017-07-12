@@ -9,7 +9,7 @@ const DisplayPet = (props) => {
 
     if (props.pet === undefined) {
       return (
-        <h3>No pets left, update your filter settings to see more pets.</h3>
+        <h3>No pets found. Update your filter settings to see more pets.</h3>
       )
     } else if (props.detail === true){
       return (

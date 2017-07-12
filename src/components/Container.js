@@ -152,31 +152,15 @@ export default class Container extends Component {
   }
 
   applyFilter(filter){
-    // debugger
-    // this.setState((prevState) => {
-    //   pets: prevState.pets.filter(pet => ({
-    //     if(filter.species !== undefined){
-    //       return pet.species === filter.species
-    //     }
-        // if(filter.sex !== undefined){
-        //   return pet.sex === filter.sex
-        // }
-        // if(filter.city !== undefined){
-        //   return pet.city === filter.city
-        // }
-        // if(filter.size !== undefined){
-        //   return pet.size === filter.size
-        // }
-        // if(filter.age !== undefined){
-        //   return pet.age === filter.age
-        // }
-      // }))
     PetAdapter.getFilteredPets(filter)
     .then(data => {
-      this.setState({
-        petNum: data[0].id,
-        pets: data
-       })
+      debugger
+      if (data[0] !== undefined){
+        this.setState({
+          petNum: data[0].id,
+          pets: data
+        })
+      }
     })
   }
 
@@ -186,20 +170,6 @@ export default class Container extends Component {
         <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
         <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
-        {/* <Switch>
-          <Route exact path='/pets/:id' render={(routerProps) => {
-              const id = routerProps.match.params.id
-              const pet = this.state.pets.find( p =>  p.id === parseInt(id) )
-                if(!pet){
-                routerProps.history.push("/pets")
-                return null
-                } else {
-                  return <PetDetail pet={pet} deleteUserPet={this.deleteUserPet} />
-                }
-              }}
-            />
-          <Route exact path='/users/1' render={ <FilterForm />} />
-        </Switch> */}
       </div>
     )
   }

@@ -11,8 +11,8 @@
     "semantic-ui-react": "^0.70.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.8",
-    "semantic-ui": "^2.2.10"
+    "gulp-install": "^1.1.0",
+    "react-scripts": "1.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
