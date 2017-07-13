@@ -17,7 +17,7 @@ const DisplayPet = (props) => {
     } else if (props.detail === true){
       return (
         <Card fluid centered raised color="red">
-          <Image src={props.pet.picture} size="huge"/>
+          <Image src={props.pet.picture} fluid />
           <Card.Content>
             <Card.Header size="massive" color="green">
               {props.pet.name}
@@ -35,10 +35,10 @@ const DisplayPet = (props) => {
             </a>
             <div>
               <Button.Group>
-                <Button size="big" secondary onClick={props.noPet}>Skip</Button>
-                <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button size="massive" secondary onClick={props.noPet}>Skip</Button>
+                <Button size="massive" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
-                  size="big"
+                  size="massive"
                   color="green"
                   content="Adopt"
                   icon="heart" onClick={props.yesPet}
@@ -54,28 +54,28 @@ const DisplayPet = (props) => {
     } else {
       return (
         <Card fluid centered raised>
-          <Image src={props.pet.picture} size="huge"/>
+          <Image src={props.pet.picture} fluid />
           <Card.Content>
-            <Card.Header>
-              {props.pet.name}
+            <Card.Header size="massive">
+              <h1>{props.pet.name}</h1>
             </Card.Header>
             <Card.Meta>
-              <span className="age">
+              <span className="age"><h2>
                 Age: {props.pet.age}
-              </span>
+              </h2></span>
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a>
-              <Icon name="home" />
-              {props.pet.shelter}
+              <h2><Icon name="home" size="big"/>
+              {props.pet.shelter}</h2>
             </a>
             <div>
               <Button.Group>
-                <Button size="big" secondary onClick={props.noPet}>Skip</Button>
-                <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button size="massive" secondary onClick={props.noPet}>Skip</Button>
+                <Button size="massive" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
-                  size="big"
+                  size="massive"
                   color="green"
                   content="Adopt"
                   icon="heart" onClick={props.yesPet}

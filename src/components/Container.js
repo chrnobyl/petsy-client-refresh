@@ -173,10 +173,14 @@ export default class Container extends Component {
   render(){
     return (
       <div>
-        <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
-        <h1>{message}</h1>
+        <div className="center">
+          <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
+          <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
+        </div>
+
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
-        <div><FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/></div>
+        <h1>{message}</h1>
+
       </div>
     )
   }

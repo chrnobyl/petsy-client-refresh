@@ -34,11 +34,12 @@
 }
 
 .center {
-  width: 25%;
+  width: 700px;
+  left: auto;
   text-align: center;
   max-height: 0px;
   display: block;
-  margin: auto;
+  margin: 20px;
   /*position: relative;*/
   /*margin-right: auto;*/
 }
@@ -55,8 +56,22 @@
 
 .right {
   float: right;
+  height: 1000px;
   margin-left: auto;
   margin-right: 10%;
+  overflow-y: scroll;
+}
+
+#pref-button{
+  position: absolute;
+  float: right;
+  bottom: 5px;
+}
+
+.left {
+  float: left;
+  margin-left: 10%;
+  margin-right: auto;
 }
 
 .floatright {
@@ -67,6 +82,9 @@
    font-size: 24px;
 }
 
+.img-height {
+  height: 10%
+}
 .ui-card {
     max-width: 50%;
     position: relative;

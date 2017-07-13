@@ -66,7 +66,7 @@ export default class FilterForm extends Component {
       })
 
       return (
-        <Modal size='fullscreen' trigger={<Button> Preferences</Button>}>
+        <Modal size='fullscreen' trigger={<Button id="pref-button" size="massive"> Preferences</Button>}>
           <Modal.Header>Filter pets by:</Modal.Header>
           <Modal.Content>
             <Form size='large' onSubmit={this.handleSubmit}>
