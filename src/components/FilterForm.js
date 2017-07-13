@@ -24,7 +24,7 @@ const ages = [
   { key: 'a', text: 'All', value: '%'},
   { key: 'b', text: 'Baby', value: 'Baby'},
   { key: 'y', text: 'Young', value: 'Young'},
-  { key: 'a', text: 'Adult', value: 'Adult'}
+  { key: 'd', text: 'Adult', value: 'Adult'}
 ]
 
 export default class FilterForm extends Component {
@@ -36,7 +36,8 @@ export default class FilterForm extends Component {
       sex: "",
       city: "",
       age: "",
-      size: ""
+      size: "",
+      modalOpen: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
