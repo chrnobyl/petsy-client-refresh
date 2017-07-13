@@ -43,6 +43,16 @@
   /*margin-right: auto;*/
 }
 
+.preferences {
+  width: 25%;
+  text-align: center;
+  max-height: 0px;
+  display: block;
+  margin: auto;
+  /*position: relative;*/
+  /*margin-right: auto;*/
+}
+
 .right {
   float: right;
   margin-left: auto;

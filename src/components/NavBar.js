@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Popup, Button } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: 'Petsy!' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -12,10 +12,14 @@ export default class NavBar extends Component {
 
     return (
       <Segment inverted>
-        <Menu inverted secondary>
-          <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item as={ Link } to={'/users/1'} name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick} />
-          <Menu.Item name='pets' active={activeItem === 'pets'} onClick={this.handleItemClick} />
+        <Menu inverted size="massive" widths="16">
+          <Popup
+            trigger={<Button size="massive" fluid="true" color="black" content='Welcome to Petsy' />}
+            content={<Button size="massive" fluid="true"
+               content={<Button size="massive" fluid="true" color='green' content='Woof' onClick={() => console.log("meow")}/>} />}
+            on='click'
+            position='top right'
+          />
         </Menu>
       </Segment>
     )

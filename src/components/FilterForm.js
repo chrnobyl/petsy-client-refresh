@@ -66,7 +66,7 @@ export default class FilterForm extends Component {
       })
 
       return (
-        <Modal size='fullscreen' trigger={<Button>Show User Preferences</Button>}>
+        <Modal size='fullscreen' trigger={<Button> Preferences</Button>}>
           <Modal.Header>Filter pets by:</Modal.Header>
           <Modal.Content>
             <Form size='large' onSubmit={this.handleSubmit}>
@@ -76,11 +76,6 @@ export default class FilterForm extends Component {
                 <Form.Select label='City' options={cities} placeholder='city' onChange={this.handleChange} />
                 <Form.Select label='Size' options={sizes} placeholder='size' onChange={this.handleChange} />
                 <Form.Select label='Age' options={ages} placeholder='age' onChange={this.handleChange} />
-                {/* <Form.Field>
-                  <Checkbox label='Small' onChange={this.handleChange}/>
-                  <Checkbox label='Medium' onChange={this.handleChange}/>
-                  <Checkbox label='Large' onChange={this.handleChange}/>
-                </Form.Field> */}
               </Form.Group>
 
               <Form.Button>Submit</Form.Button>

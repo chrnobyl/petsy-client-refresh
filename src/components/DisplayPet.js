@@ -9,14 +9,17 @@ const DisplayPet = (props) => {
 
     if (props.pet === undefined) {
       return (
-        <h3>No pets found. Update your filter settings to see more pets.</h3>
+        <div>
+          <h3>No pets found. Update your filter settings to see more pets.</h3>
+          <Image src="https://wbo2hhkgdnexdedu-zippykid.netdna-ssl.com/wp-content/uploads/2014/04/duck-hunt.gif" size="huge"/>
+        </div>
       )
     } else if (props.detail === true){
       return (
-        <Card raised="true" color="red">
+        <Card fluid="true" centered="true" raised="true" color="red">
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
-            <Card.Header color="green">
+            <Card.Header size="massive" color="green">
               {props.pet.name}
             </Card.Header>
             <Card.Meta>
@@ -31,13 +34,16 @@ const DisplayPet = (props) => {
               {props.pet.shelter}
             </a>
             <div>
-            <Button secondary onClick={props.noPet}>Next</Button>
-            <Button color="purple" onClick={props.showDetail}>Bio</Button>
-            <Button
-              color="green"
-              content="Adopt"
-              icon="heart" onClick={props.yesPet}
-            />
+              <Button.Group>
+                <Button size="big" secondary onClick={props.noPet}>Next</Button>
+                <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button
+                  size="big"
+                  color="green"
+                  content="Adopt"
+                  icon="heart" onClick={props.yesPet}
+                />
+              </Button.Group>
           </div>
           </Card.Content>
           <Card.Content extra>
@@ -47,7 +53,7 @@ const DisplayPet = (props) => {
       )
     } else {
       return (
-        <Card raised={true}>
+        <Card fluid="true" centered="true" raised="true">
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header>
@@ -65,13 +71,16 @@ const DisplayPet = (props) => {
               {props.pet.shelter}
             </a>
             <div>
-            <Button secondary onClick={props.noPet}>Next</Button>
-            <Button color="purple" onClick={props.showDetail}>Bio</Button>
-            <Button
-              color="green"
-              content="Adopt"
-              icon="heart" onClick={props.yesPet}
-            />
+              <Button.Group>
+                <Button size="big" secondary onClick={props.noPet}>Next</Button>
+                <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button
+                  size="big"
+                  color="green"
+                  content="Adopt"
+                  icon="heart" onClick={props.yesPet}
+                />
+              </Button.Group>
           </div>
           </Card.Content>
         </Card>

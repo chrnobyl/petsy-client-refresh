@@ -6,7 +6,8 @@ import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'
 import PetDetail from './PetDetail'
-import NavBar from './NavBar'
+
+let message
 
 export default class Container extends Component {
   constructor(){
@@ -58,6 +59,7 @@ export default class Container extends Component {
     let newPetArray = this.state.pets
     newPetArray.shift()
     if (this.state.userPetIds.includes(this.state.petNum)){
+      message = "You already added that pet."
       if (newPetArray.length > 1) {
         this.setState((prevState) => ({
           pets: newPetArray,
@@ -69,6 +71,7 @@ export default class Container extends Component {
         }))
       }
     } else {
+      message = "Pet added!"
       if (newPetArray.length > 1) {
         PetAdapter.createUserPet(this.state.petNum)
         .then(res => {
@@ -94,6 +97,7 @@ export default class Container extends Component {
   }
 
   noPet(){
+    message = ""
     console.log("no")
     let newPetArray = this.state.pets
     newPetArray.shift()
@@ -170,8 +174,9 @@ export default class Container extends Component {
     return (
       <div>
         <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
+        <h1>{message}</h1>
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
-        <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
+        <div><FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/></div>
       </div>
     )
   }
