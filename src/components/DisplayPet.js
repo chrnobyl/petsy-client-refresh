@@ -20,18 +20,18 @@ const DisplayPet = (props) => {
           <Image src={props.pet.picture} fluid />
           <Card.Content>
             <Card.Header size="massive" color="green">
-              {props.pet.name}
+              <h1>{props.pet.name}</h1>
             </Card.Header>
             <Card.Meta>
-              <span className="age">
+              <span className="age"><h2>
                 Age: {props.pet.age}
-              </span>
+              </h2></span>
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a href={`mailto:${props.pet.email}`}>
-              <Icon name="home" />
-              {props.pet.shelter}
+              <h2><Icon name="home" size="big"/>
+              {props.pet.shelter}</h2>
             </a>
             <div>
               <Button.Group>
@@ -47,7 +47,7 @@ const DisplayPet = (props) => {
           </div>
           </Card.Content>
           <Card.Content extra>
-            <p>{props.pet.description}</p>
+            <h2><p>{props.pet.description}</p></h2>
           </Card.Content>
         </Card>
       )
@@ -81,6 +81,7 @@ const DisplayPet = (props) => {
                   icon="heart" onClick={props.yesPet}
                 />
               </Button.Group>
+
           </div>
           </Card.Content>
         </Card>

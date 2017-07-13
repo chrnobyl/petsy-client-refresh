@@ -6,6 +6,7 @@ import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'
 import PetDetail from './PetDetail'
+import { Popup } from 'semantic-ui-react'
 
 let message
 
@@ -179,7 +180,14 @@ export default class Container extends Component {
         </div>
 
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
-        <h1>{message}</h1>
+
+        <div className="message"><h1>{message}</h1></div>
+        <div id="cat"><Popup
+    trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
+    content='meow.'
+    on='hover'
+  /></div>
+
 
       </div>
     )

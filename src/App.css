@@ -62,10 +62,10 @@
   overflow-y: scroll;
 }
 
-#pref-button{
+#pref-button {
   position: absolute;
-  float: right;
-  bottom: 5px;
+  right: 150px;
+  bottom: 1050px;
 }
 
 .left {
@@ -79,12 +79,28 @@
 }
 
 .largetext {
-   font-size: 24px;
+   font-size: 36pt;
+   text-align: center;
 }
 
 .img-height {
   height: 10%
 }
+
+.message {
+  position: absolute;
+  right: 150px;
+  bottom: 1000px;
+  color: red;
+}
+
+#cat {
+  position: absolute;
+  right: 150px;
+  bottom: .1px;
+  transform: rotate(180deg);
+}
+
 .ui-card {
     max-width: 50%;
     position: relative;

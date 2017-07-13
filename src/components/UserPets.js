@@ -14,19 +14,19 @@ export default function UserPets(props) {
             <List.Item key={i}>
                 <Image avatar src={pet.picture} />
               <List.Content>
-                <List.Header as={ Link } to={`/pets/${pet.id}`}>
-                  {pet.name}
+                <List.Header>
+                  <h2>{pet.name}</h2>
                 </List.Header>
-                <Modal trigger={<Button size="large">Pet Details</Button>} closeIcon="close" size="large">
+                <Modal trigger={<Button size="big">Pet Details</Button>} closeIcon="close" size="large">
                   <Modal.Content>
-                    <div><h3>{pet.name}, Age: {pet.age}</h3></div>
+                    <div><h1>{pet.name}, Age: {pet.age}</h1></div>
                     <div className="img"><Image src={pet.picture} size="large"/></div>
-                    <div>{pet.description}</div>
-                    <div><h4>To set up a meeting with {pet.name}, send an email to the shelter at {pet.email}.</h4></div>
-                    <Button negative onClick={() => props.deleteUserPet(pet.id)}>Remove pet from list</Button>
+                    <div><h2>{pet.description}</h2></div>
+                    <div><h2>To set up a meeting with {pet.name}, send an email to the shelter at {pet.email}.</h2></div>
+                    <Button negative size="massive" onClick={() => props.deleteUserPet(pet.id)}>Remove pet from list</Button>
                   </Modal.Content>
                 </Modal>
-                <Button size="large" icon='remove' onClick={() => props.deleteUserPet(pet.id)} />
+                <Button size="big" icon='remove' onClick={() => props.deleteUserPet(pet.id)} />
               </List.Content>
             </List.Item>
           )

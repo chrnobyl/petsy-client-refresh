@@ -12,15 +12,7 @@ export default class NavBar extends Component {
 
     return (
       <Segment className="largetext" inverted>
-        <Menu inverted size="massive" widths="16">
-          <Popup inverted
-            trigger={<Button className="largetext" size="massive" fluid color="black" content='Wag!' />}
-            content={<Button size="massive" fluid
-               content={<Button size="massive" fluid content='Woof' onClick={() => console.log("meow")}/>} />}
-            on='click'
-            position='top right'
-          />
-        </Menu>
+          <h1>Wag!</h1>
       </Segment>
     )
   }
