@@ -63,6 +63,10 @@
   float: right;
 }
 
+.largetext {
+   font-size: 24px;
+}
+
 .ui-card {
     max-width: 50%;
     position: relative;

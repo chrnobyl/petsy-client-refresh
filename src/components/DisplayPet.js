@@ -16,7 +16,7 @@ const DisplayPet = (props) => {
       )
     } else if (props.detail === true){
       return (
-        <Card fluid="true" centered="true" raised="true" color="red">
+        <Card fluid centered raised color="red">
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header size="massive" color="green">
@@ -35,7 +35,7 @@ const DisplayPet = (props) => {
             </a>
             <div>
               <Button.Group>
-                <Button size="big" secondary onClick={props.noPet}>Next</Button>
+                <Button size="big" secondary onClick={props.noPet}>Skip</Button>
                 <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
                   size="big"
@@ -53,7 +53,7 @@ const DisplayPet = (props) => {
       )
     } else {
       return (
-        <Card fluid="true" centered="true" raised="true">
+        <Card fluid centered raised>
           <Image src={props.pet.picture} size="huge"/>
           <Card.Content>
             <Card.Header>
@@ -72,7 +72,7 @@ const DisplayPet = (props) => {
             </a>
             <div>
               <Button.Group>
-                <Button size="big" secondary onClick={props.noPet}>Next</Button>
+                <Button size="big" secondary onClick={props.noPet}>Skip</Button>
                 <Button size="big" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
                   size="big"

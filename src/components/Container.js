@@ -32,19 +32,19 @@ export default class Container extends Component {
   }
 
   componentDidMount(){
-    PetAdapter.all()
-    .then(data => {
-      this.setState({
-        petNum: data[0].id,
-        pets: data
-       })
-    })
     PetAdapter.allUserPets()
     .then(data => {
       this.setState({
         userPets: data.filter((d, i) => data.indexOf(d) === i),
         userPetIds: data.map(d => d.id)
       })
+    })
+    PetAdapter.all()
+    .then(data => {
+      this.setState(prevState => ({
+        petNum: data[0].id,
+        pets: data
+      }))
     })
     PetAdapter.allShelters()
     .then(data => {

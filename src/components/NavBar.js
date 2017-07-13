@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Menu, Segment, Popup, Button } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
-  state = { activeItem: 'Petsy!' }
+  state = { activeItem: 'Wag!' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -11,12 +11,12 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <Segment inverted>
+      <Segment className="largetext" inverted>
         <Menu inverted size="massive" widths="16">
-          <Popup
-            trigger={<Button size="massive" fluid="true" color="black" content='Welcome to Petsy' />}
+          <Popup inverted
+            trigger={<Button className="largetext" size="massive" fluid="true" color="black" content='Wag!' />}
             content={<Button size="massive" fluid="true"
-               content={<Button size="massive" fluid="true" color='green' content='Woof' onClick={() => console.log("meow")}/>} />}
+               content={<Button size="massive" fluid="true" content='Woof' onClick={() => console.log("meow")}/>} />}
             on='click'
             position='top right'
           />
