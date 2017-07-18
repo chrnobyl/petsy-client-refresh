@@ -27,22 +27,78 @@
   max-width: 400px;
 }
 
+.img {
+  display: block;
+  margin: auto;
+  width: 40%;
+}
+
 .center {
-  max-width: 75%;
+  width: 700px;
+  left: auto;
+  text-align: center;
   max-height: 0px;
   display: block;
-  margin-left: auto;
+  margin: 20px;
+  /*position: relative;*/
+  /*margin-right: auto;*/
+}
+
+.preferences {
+  width: 25%;
+  text-align: center;
+  max-height: 0px;
+  display: block;
+  margin: auto;
+  /*position: relative;*/
   /*margin-right: auto;*/
 }
 
 .right {
   float: right;
+  height: 1000px;
   margin-left: auto;
   margin-right: 10%;
+  overflow-y: scroll;
+}
+
+#pref-button {
+  position: absolute;
+  right: 150px;
+  bottom: 1050px;
+}
+
+.left {
+  float: left;
+  margin-left: 10%;
+  margin-right: auto;
 }
 
 .floatright {
   float: right;
+}
+
+.largetext {
+   font-size: 36pt;
+   text-align: center;
+}
+
+.img-height {
+  height: 10%
+}
+
+.message {
+  position: absolute;
+  right: 150px;
+  bottom: 1000px;
+  color: red;
+}
+
+#cat {
+  position: absolute;
+  right: 150px;
+  bottom: .1px;
+  transform: rotate(180deg);
 }
 
 .ui-card {

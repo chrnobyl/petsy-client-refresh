@@ -2,25 +2,29 @@ import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Form, Checkbox } from 'semantic-ui-react'
 
 const sexes = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'm', text: 'Male', value: 'M' },
   { key: 'f', text: 'Female', value: 'F' },
 ]
 
 const species = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'c', text: 'Cat', value: 'cat'},
   { key: 'd', text: 'Dog', value: 'dog'}
 ]
 
 const sizes = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 's', text: 'Small', value: 'S'},
   { key: 'm', text: 'Medium', value: 'M'},
   { key: 'l', text: 'Large', value: 'L'}
 ]
 
 const ages = [
+  { key: 'a', text: 'All', value: '%'},
   { key: 'b', text: 'Baby', value: 'Baby'},
   { key: 'y', text: 'Young', value: 'Young'},
-  { key: 'a', text: 'Adult', value: 'Adult'}
+  { key: 'd', text: 'Adult', value: 'Adult'}
 ]
 
 export default class FilterForm extends Component {
@@ -32,7 +36,8 @@ export default class FilterForm extends Component {
       sex: "",
       city: "",
       age: "",
-      size: ""
+      size: "",
+      modalOpen: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -62,7 +67,7 @@ export default class FilterForm extends Component {
       })
 
       return (
-        <Modal size='fullscreen' trigger={<Button>Show User Preferences</Button>}>
+        <Modal size='fullscreen' trigger={<Button id="pref-button" size="massive"> Preferences</Button>}>
           <Modal.Header>Filter pets by:</Modal.Header>
           <Modal.Content>
             <Form size='large' onSubmit={this.handleSubmit}>
@@ -72,11 +77,6 @@ export default class FilterForm extends Component {
                 <Form.Select label='City' options={cities} placeholder='city' onChange={this.handleChange} />
                 <Form.Select label='Size' options={sizes} placeholder='size' onChange={this.handleChange} />
                 <Form.Select label='Age' options={ages} placeholder='age' onChange={this.handleChange} />
-                {/* <Form.Field>
-                  <Checkbox label='Small' onChange={this.handleChange}/>
-                  <Checkbox label='Medium' onChange={this.handleChange}/>
-                  <Checkbox label='Large' onChange={this.handleChange}/>
-                </Form.Field> */}
               </Form.Group>
 
               <Form.Button>Submit</Form.Button>

@@ -6,6 +6,9 @@ import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'
 import PetDetail from './PetDetail'
+import { Popup } from 'semantic-ui-react'
+
+let message
 
 export default class Container extends Component {
   constructor(){
@@ -30,19 +33,19 @@ export default class Container extends Component {
   }
 
   componentDidMount(){
-    PetAdapter.all()
-    .then(data => {
-      this.setState({
-        petNum: data[0].id,
-        pets: data
-       })
-    })
     PetAdapter.allUserPets()
     .then(data => {
       this.setState({
         userPets: data.filter((d, i) => data.indexOf(d) === i),
         userPetIds: data.map(d => d.id)
       })
+    })
+    PetAdapter.all()
+    .then(data => {
+      this.setState(prevState => ({
+        petNum: data[0].id,
+        pets: data
+      }))
     })
     PetAdapter.allShelters()
     .then(data => {
@@ -54,10 +57,10 @@ export default class Container extends Component {
   }
 
   yesPet(){
-    console.log(this.state.userPetIds)
     let newPetArray = this.state.pets
     newPetArray.shift()
     if (this.state.userPetIds.includes(this.state.petNum)){
+      message = "You already added that pet."
       if (newPetArray.length > 1) {
         this.setState((prevState) => ({
           pets: newPetArray,
@@ -69,6 +72,7 @@ export default class Container extends Component {
         }))
       }
     } else {
+      message = "Pet added!"
       if (newPetArray.length > 1) {
         PetAdapter.createUserPet(this.state.petNum)
         .then(res => {
@@ -94,6 +98,7 @@ export default class Container extends Component {
   }
 
   noPet(){
+    message = ""
     console.log("no")
     let newPetArray = this.state.pets
     newPetArray.shift()
@@ -104,7 +109,7 @@ export default class Container extends Component {
       }))
     } else if (newPetArray.length <= 1) {
       this.setState((prevState) => ({
-        pets: newPetArray,
+        pets: newPetArray
       }))
     }
   }
@@ -126,7 +131,6 @@ export default class Container extends Component {
   deleteUserPet(id){
     PetAdapter.destroyUserPet(id)
     .then( () => {
-      console.log(this.state.userPets)
       this.setState(prevState => {
         return {
           userPets: prevState.userPets.filter(pet => pet.id !== id),
@@ -154,7 +158,6 @@ export default class Container extends Component {
   applyFilter(filter){
     PetAdapter.getFilteredPets(filter)
     .then(data => {
-      debugger
       if (data[0] !== undefined){
         this.setState({
           petNum: data[0].id,
@@ -164,12 +167,28 @@ export default class Container extends Component {
     })
   }
 
+  // clearAllUserPets(){
+  //
+  // }
+
   render(){
     return (
       <div>
-        <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
+        <div className="center">
+          <DisplayPet pet={this.state.pets[0]} petNum={this.state.petNum} yesPet={this.yesPet} noPet={this.noPet} showDetail={this.showDetail} detail={this.state.detail} shelters={this.state.shelters}/>
+          <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
+        </div>
+
         <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
-        <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
+
+        <div className="message"><h1>{message}</h1></div>
+        <div id="cat"><Popup
+    trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
+    content='meow.'
+    on='hover'
+  /></div>
+
+
       </div>
     )
   }
