@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1'
+const baseUrl = 'https://wag-api.herokuapp.com/api/v1/'
 
 export default class PetAdapter  {
   static all(){
