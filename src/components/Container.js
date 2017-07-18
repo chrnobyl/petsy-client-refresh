@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import { Route, Switch } from 'react-router-dom'
-// import { browserHistory } from 'react-router';
 import PetAdapter from '../adapters/PetAdapter'
 import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
