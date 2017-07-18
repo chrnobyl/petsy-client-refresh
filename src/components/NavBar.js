@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { Menu, Segment, Popup, Button } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
