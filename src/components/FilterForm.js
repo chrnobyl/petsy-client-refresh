@@ -41,6 +41,7 @@ export default class FilterForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.uniq = this.uniq.bind(this)
 
   }
 
@@ -61,9 +62,17 @@ export default class FilterForm extends Component {
       this.props.applyFilter(stateObj)
     }
 
+    uniq(a) {
+      return Array.from(new Set(a));
+    }
+
     render(){
-      let cities = this.props.shelters.map((shelter, i) => {
-        return { key: i, text: shelter.city, value: shelter.city }
+      let cities = this.props.shelters.map(shelter => {
+        return shelter.city
+      })
+
+      let cityMenu = this.uniq(cities).map((city, i) => {
+        return { key: i, text: city, value: city }
       })
 
       return (
@@ -74,7 +83,7 @@ export default class FilterForm extends Component {
               <Form.Group widths='equal'>
                 <Form.Select label='Species' options={species} placeholder='species' onChange={this.handleChange} />
                 <Form.Select label='Sex' options={sexes} placeholder='sex' onChange={this.handleChange} />
-                <Form.Select label='City' options={cities} placeholder='city' onChange={this.handleChange} />
+                <Form.Select label='City' options={cityMenu} placeholder='city' onChange={this.handleChange} />
                 <Form.Select label='Size' options={sizes} placeholder='size' onChange={this.handleChange} />
                 <Form.Select label='Age' options={ages} placeholder='age' onChange={this.handleChange} />
               </Form.Group>

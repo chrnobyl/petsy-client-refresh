@@ -24,7 +24,7 @@
 }
 
 .pics {
-  max-width: 400px;
+  max-width: 200px;
 }
 
 .img {
@@ -39,7 +39,7 @@
   text-align: center;
   max-height: 0px;
   display: block;
-  margin: 20px;
+  margin: 80px;
   /*position: relative;*/
   /*margin-right: auto;*/
 }
@@ -58,14 +58,14 @@
   float: right;
   height: 1000px;
   margin-left: auto;
-  margin-right: 10%;
+  margin-right: 20%;
   overflow-y: scroll;
 }
 
 #pref-button {
   position: absolute;
-  right: 150px;
-  bottom: 1050px;
+  right: 580px;
+  bottom: 1200px;
 }
 
 .left {
@@ -89,14 +89,21 @@
 
 .message {
   position: absolute;
-  right: 150px;
+  text-align: left;
+  right: 1285px;
   bottom: 1000px;
   color: red;
 }
 
-#cat {
+.instructions {
   position: absolute;
-  right: 150px;
+  right: 920px;
+  bottom: 800px;
+}
+
+#cat {
+  position: fixed;
+  right: 1050px;
   bottom: .1px;
   transform: rotate(180deg);
 }

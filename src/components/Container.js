@@ -177,9 +177,10 @@ export default class Container extends Component {
           <FilterForm show={this.state.modal} onClose={this.showModal} pets={this.state.pets} shelters={this.state.shelters} applyFilter={this.applyFilter}/>
         </div>
 
-        <UserPets className="element" pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
+        <UserPets pets={this.state.userPets} deleteUserPet={this.deleteUserPet} />
 
         <div className="message"><h1>{message}</h1></div>
+        <div className="instructions"><h1>Use the arrow keys! Press right to adopt, left to skip, or down to see bio.</h1></div>
         <div id="cat"><Popup
     trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
     content='meow.'
