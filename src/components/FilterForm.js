@@ -71,9 +71,12 @@ export default class FilterForm extends Component {
         return shelter.city
       })
 
-      let cityMenu = this.uniq(cities).map((city, i) => {
-        return { key: i, text: city, value: city }
+      let cityMenu = [ { key: 'a', text: 'All', value: '%'} ]
+
+      this.uniq(cities).map((city, i) => {
+        return cityMenu.push({ key: i, text: city, value: city })
       })
+
 
       return (
         <Modal size='fullscreen' trigger={<Button id="pref-button" size="massive"> Preferences</Button>}>
