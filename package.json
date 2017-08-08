@@ -18,7 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run build",
-    "postinstall": "npm run heroku",
+    "postinstall": "npm run build:clean",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
