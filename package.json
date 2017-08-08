@@ -1,6 +1,9 @@
 {
   "name": "final-project-front-end",
   "version": "0.1.0",
+  "engines": {
+    "node": "6.11.1"
+  },
   "private": true,
   "dependencies": {
     "history": "^4.6.3",
