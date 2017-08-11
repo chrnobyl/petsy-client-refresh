@@ -39,7 +39,7 @@ export default class FilterForm extends Component {
       size: "",
       modalOpen: false
     }
-    
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.uniq = this.uniq.bind(this)
@@ -64,7 +64,7 @@ export default class FilterForm extends Component {
     }
 
     uniq(a) {
-      return Array.from(new Set(a));
+      return Array.from(new Set(a))
     }
 
     render(){
