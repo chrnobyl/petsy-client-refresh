@@ -23,6 +23,10 @@
   to { transform: rotate(360deg); }
 }
 
+.body {
+  min-width:300px;
+}
+
 .pics {
   max-width: 200px;
 }
