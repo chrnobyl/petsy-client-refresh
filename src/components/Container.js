@@ -181,13 +181,13 @@ export default class Container extends Component {
 
         <div className="message"><h1>{message}</h1></div>
         <div className="instructions"><h1>Use the arrow keys! Press right to adopt, left to skip, or down to see bio.</h1></div>
-        <div id="cat"><Popup
-    trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
-    content='meow.'
-    on='hover'
-  /></div>
-
-
+        <div id="cat">
+          <Popup
+          trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
+          content='meow.'
+          on='hover'
+          />
+        </div>
       </div>
     )
   }
