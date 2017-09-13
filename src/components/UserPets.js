@@ -8,7 +8,7 @@ export default function UserPets(props) {
   if (props.pets.length >= 1) {
   return (
     <div className="right">
-      <List celled relaxed verticalAlign="middle" size="massive">
+      <List celled relaxed verticalAlign="middle" size="big">
         {props.pets.map((pet, i) => {
           return (
             <List.Item key={i}>
