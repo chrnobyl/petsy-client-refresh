@@ -38,7 +38,7 @@
 }
 
 .center {
-  width: 700px;
+  width: 50%;
   left: auto;
   text-align: center;
   max-height: 0px;
@@ -69,7 +69,7 @@
 #pref-button {
   position: absolute;
   right: 200px;
-  bottom: 90%;
+  bottom: 91%;
   margin: 0 auto;
 }
 
@@ -102,8 +102,8 @@
 
 .instructions {
   position: absolute;
-  right: 920px;
-  bottom: 800px;
+  right: 320px;
+  bottom: 200px;
 }
 
 #cat {

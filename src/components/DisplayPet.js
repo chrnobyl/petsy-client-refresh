@@ -35,10 +35,10 @@ const DisplayPet = (props) => {
             </a>
             <div>
               <Button.Group>
-                <Button size="massive" secondary onClick={props.noPet}>Skip</Button>
-                <Button size="massive" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button size="large" secondary onClick={props.noPet}>Skip</Button>
+                <Button size="large" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
-                  size="massive"
+                  size="large"
                   color="green"
                   content="Adopt"
                   icon="heart" onClick={props.yesPet}
@@ -72,10 +72,10 @@ const DisplayPet = (props) => {
             </a>
             <div>
               <Button.Group>
-                <Button size="massive" secondary onClick={props.noPet}>Skip</Button>
-                <Button size="massive" color="purple" onClick={props.showDetail}>Bio</Button>
+                <Button size="large" secondary onClick={props.noPet}>Skip</Button>
+                <Button size="large" color="purple" onClick={props.showDetail}>Bio</Button>
                 <Button
-                  size="massive"
+                  size="large"
                   color="green"
                   content="Adopt"
                   icon="heart" onClick={props.yesPet}
