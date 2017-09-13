@@ -59,10 +59,11 @@
 }
 
 .right {
+  position: relative;
   float: right;
-  height: 1000px;
+  height: 1500px;
   margin-left: auto;
-  margin-right: 10%;
+  margin-right: 5%;
   overflow-y: scroll;
 }
 
@@ -102,13 +103,13 @@
 
 .instructions {
   position: absolute;
-  right: 350px;
+  right: 400px;
   bottom: 450px;
 }
 
 #cat {
   position: fixed;
-  width: 1%;
+  max-width: 20px;
   right: 400px;
   bottom: .1px;
   transform: rotate(180deg);
