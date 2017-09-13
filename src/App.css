@@ -62,7 +62,7 @@
   float: right;
   height: 1000px;
   margin-left: auto;
-  margin-right: 20%;
+  margin-right: 10%;
   overflow-y: scroll;
 }
 
@@ -108,6 +108,7 @@
 
 #cat {
   position: fixed;
+  width: 25%;
   right: 1050px;
   bottom: .1px;
   transform: rotate(180deg);
