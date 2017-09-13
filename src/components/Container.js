@@ -180,7 +180,7 @@ export default class Container extends Component {
         </div>
 
         <div className="instructions">
-          <h3>Use the arrow keys! Press right to adopt, left to skip, or down to see bio.</h3>
+          <h4>Use the arrow keys! Press right to adopt, left to skip, or down to see bio.</h4>
         </div>
 
         <div id="cat">

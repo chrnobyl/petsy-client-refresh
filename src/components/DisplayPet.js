@@ -20,18 +20,18 @@ const DisplayPet = (props) => {
           <Image src={props.pet.picture} fluid />
           <Card.Content>
             <Card.Header size="large" color="green">
-              <h1>{props.pet.name}</h1>
+              <h2>{props.pet.name}</h2>
             </Card.Header>
             <Card.Meta>
-              <span className="age"><h2>
+              <span className="age"><h3>
                 Age: {props.pet.age}
-              </h2></span>
+              </h3></span>
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a href={`mailto:${props.pet.email}`}>
-              <h2><Icon name="home" size="big"/>
-              {props.pet.shelter}</h2>
+              <h3><Icon name="home" size="big"/>
+              {props.pet.shelter}</h3>
             </a>
             <div>
               <Button.Group>
@@ -57,18 +57,18 @@ const DisplayPet = (props) => {
           <Image src={props.pet.picture} fluid />
           <Card.Content>
             <Card.Header size="massive">
-              <h1>{props.pet.name}</h1>
+              <h2>{props.pet.name}</h2>
             </Card.Header>
             <Card.Meta>
-              <span className="age"><h2>
+              <span className="age"><h3>
                 Age: {props.pet.age}
-              </h2></span>
+              </h3></span>
             </Card.Meta>
           </Card.Content>
           <Card.Content extra>
             <a>
-              <h2><Icon name="home" size="big"/>
-              {props.pet.shelter}</h2>
+              <h3><Icon name="home" size="big"/>
+              {props.pet.shelter}</h3>
             </a>
             <div>
               <Button.Group>

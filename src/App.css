@@ -43,7 +43,7 @@
   text-align: center;
   max-height: 0px;
   display: block;
-  margin: 80px;
+  margin: 50px;
   /*position: relative;*/
   /*margin-right: auto;*/
 }
@@ -102,14 +102,14 @@
 
 .instructions {
   position: absolute;
-  right: 320px;
-  bottom: 200px;
+  right: 350px;
+  bottom: 450px;
 }
 
 #cat {
   position: fixed;
-  width: 25%;
-  right: 1050px;
+  width: 1%;
+  right: 400px;
   bottom: .1px;
   transform: rotate(180deg);
 }
