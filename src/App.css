@@ -61,7 +61,7 @@
 .right {
   position: relative;
   float: right;
-  height: 1500px;
+  height: 1000px;
   margin-left: auto;
   margin-right: 5%;
   overflow-y: scroll;
@@ -96,7 +96,7 @@
 .message {
   position: absolute;
   text-align: left;
-  right: 1285px;
+  right: 500px;
   bottom: 1000px;
   color: red;
 }
@@ -109,6 +109,8 @@
 
 #cat {
   position: fixed;
+  height: auto;
+  width: auto;
   max-width: 20px;
   right: 400px;
   bottom: .1px;
