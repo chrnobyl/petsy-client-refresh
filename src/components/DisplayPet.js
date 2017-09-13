@@ -19,7 +19,7 @@ const DisplayPet = (props) => {
         <Card fluid centered raised color="red">
           <Image src={props.pet.picture} fluid />
           <Card.Content>
-            <Card.Header size="massive" color="green">
+            <Card.Header size="large" color="green">
               <h1>{props.pet.name}</h1>
             </Card.Header>
             <Card.Meta>
