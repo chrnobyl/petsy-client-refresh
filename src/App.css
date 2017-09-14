@@ -96,8 +96,8 @@
 .message {
   position: absolute;
   text-align: left;
-  right: 500px;
-  bottom: 1000px;
+  right: 400px;
+  bottom: 400px;
   color: red;
 }
 
