@@ -109,12 +109,18 @@
 
 #cat {
   position: fixed;
+  max-width: 35%;
+  /*max-height: 20px;*/
   height: auto;
   width: auto;
-  max-width: 20px;
   right: 400px;
   bottom: .1px;
+  /*background: url(http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png);
+  background-size: 250%;
+  background-repeat: no-repeat;*/
   transform: rotate(180deg);
+  /*transform: rotateX(180deg);*/
+  /*transform:scaleX(-1, 1);*/
 }
 
 .ui-card {
