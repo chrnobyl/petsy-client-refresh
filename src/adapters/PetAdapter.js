@@ -1,6 +1,18 @@
 const baseUrl = 'https://wag-api.herokuapp.com/api/v1/'
 
 export default class PetAdapter  {
+
+  static headers(){
+    return {
+      'content-type': 'application/json',
+      'accept': 'application/json'
+    }
+  }
+
+  static url(){
+    return `${baseUrl}/pets`
+  }
+  
   static all(){
     return fetch(`${this.url()}`)
       .then( res => res.json() )
@@ -64,17 +76,6 @@ export default class PetAdapter  {
     return fetch(`${baseUrl}/users/1/user_pets/${id}`, {
       method: 'DELETE'
     }).then(res => res.json() )
-  }
-
-  static headers(){
-    return {
-      'content-type': 'application/json',
-      'accept': 'application/json'
-    }
-  }
-
-  static url(){
-    return `${baseUrl}/pets`
   }
 
 }
