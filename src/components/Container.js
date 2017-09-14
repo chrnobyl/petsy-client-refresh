@@ -183,9 +183,9 @@ export default class Container extends Component {
           <h4>Use the arrow keys! Press right to adopt, left to skip, or down to see bio.</h4>
         </div>
 
-        <div id="cat">
+        <div>
           <Popup
-          trigger={<img src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
+          trigger={<img id="cat" src="http://www.hillspet.com/HillsPetUS/v1/portal/en/us/science-diet/youthful-vitality/locale-assets/img/pet-foods/bottom-banner-cat.png" />}
           content='meow.'
           on='hover'
           />
