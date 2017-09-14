@@ -12,7 +12,7 @@ export default class PetAdapter  {
   static url(){
     return `${baseUrl}/pets`
   }
-  
+
   static all(){
     return fetch(`${this.url()}`)
       .then( res => res.json() )
