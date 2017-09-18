@@ -107,6 +107,12 @@
   bottom: 450px;
 }
 
+.loginForm {
+  position: absolute;
+  right: 400px;
+  bottom: 350px;
+}
+
 #cat {
   position: fixed;
   max-width: 35%;

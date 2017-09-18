@@ -1,4 +1,5 @@
-import React { Component } from 'react'
+import React, { Component } from 'react'
+import { Form, Input } from 'semantic-ui-react'
 
 export default class LoginForm extends Component {
   constructor(){
@@ -8,20 +9,19 @@ export default class LoginForm extends Component {
       username: "",
       password: ""
     }
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleInputChange(field, event){
+  handleChange(event){
     this.setState({
-      [field]: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
-  handleFormSubmit(event){
-    debugger
+  handleSubmit(event){
     event.preventDefault()
-    this.props.onSubmit(this.state)
+    // this.props.onSubmit(this.state)
     this.setState({
       username: "",
       password: ""
@@ -29,14 +29,20 @@ export default class LoginForm extends Component {
   }
 
   render(){
-  return (
-    <form onSubmit={this.handleSubmit}>
-      <label>Username</label>
-      <input type='text' value={this.state.username} name="username" onChange={this.handleChange}/>
-      <label>Password</label>
-      <input type='password' value={this.state.password} name="password" onChange={this.handleChange}/>
-      <input type="submit" />
-    </form>
+    return (
+      <Form size='small' onSubmit={this.handleSubmit}>
+        <Form.Field>
+        <label>Username</label>
+        <Input type='text' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange} />
+        </Form.Field>
+
+        <Form.Field>
+        <label>Password</label>
+        <Input type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} />
+        </Form.Field>
+
+        <Form.Button>Log In</Form.Button>
+      </Form>
     )
   }
 }

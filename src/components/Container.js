@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PetAdapter from '../adapters/PetAdapter'
+import AuthAdapter from '../adapters/AuthAdapter'
 import UserPets from './UserPets'
 import DisplayPet from './DisplayPet'
 import FilterForm from './FilterForm'
@@ -140,16 +141,18 @@ export default class Container extends Component {
   }
 
   handleKeyDown(event){
-    event.preventDefault()
-    console.log(this.state.petNum)
-    if(event.keyCode === 39){
-      return this.yesPet()
-    } else if (event.keyCode === 37){
-      return this.noPet()
-    } else if (event.keyCode === 40){
-      return this.showDetail()
-    } else if (event.keyCode === 38){
-      return this.showModal()
+    if (event.target.name !== "username" && event.target.name !== "password"){
+      event.preventDefault()
+      console.log(this.state.petNum)
+      if(event.keyCode === 39){
+        return this.yesPet()
+      } else if (event.keyCode === 37){
+        return this.noPet()
+      } else if (event.keyCode === 40){
+        return this.showDetail()
+      } else if (event.keyCode === 38){
+        return this.showModal()
+      }
     }
   }
 

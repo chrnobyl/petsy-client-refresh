@@ -5,7 +5,8 @@ export default class PetAdapter  {
   static headers(){
     return {
       'content-type': 'application/json',
-      'accept': 'application/json'
+      'accept': 'application/json',
+      'Authorization': localStorage.getItem('jwt')
     }
   }
 
@@ -54,7 +55,6 @@ export default class PetAdapter  {
       method: 'POST',
       headers: this.headers(),
       body: query
-    // .then(window.location.href = "http://localhost:3001/foods")
     }).then(res => res.json() )
   }
 

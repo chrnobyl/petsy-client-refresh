@@ -13,6 +13,7 @@ export default class NavBar extends Component {
       <Segment className="largetext" inverted>
           <h1>Wag!</h1>
       </Segment>
+
     )
   }
 }
